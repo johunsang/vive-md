@@ -11,11 +11,19 @@ vive-md/
 ├── README.md                          # 프로젝트 개요 및 사용법
 ├── CLAUDE.md                          # 프로젝트 구조 및 작성 원칙
 ├── DOCUMENTATION_INDEX.md             # 📍 현재 문서 (인덱스)
-├── multi-agent-orchestration-papers.md # 멀티에이전트 논문 원본
 │
-├── docs/                              # 📖 논문 분석 문서
-│   ├── multi-agent-orchestration-papers-guide.md
-│   └── vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md
+├── docs/                              # 📖 문서 모음
+│   ├── research/                      # 논문 & 연구
+│   │   ├── multi-agent-orchestration-papers-guide.md
+│   │   ├── vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md
+│   │   ├── vibe-coding-ontology-research-synthesis.md
+│   │   └── debate-2026-02-18T17-43-36.md
+│   ├── guides/                        # 가이드
+│   │   └── 문서-기반-프로젝트-설정-가이드.md
+│   ├── reports/                       # 보고서
+│   │   └── orchestra-report.md
+│   ├── octo/                          # 오케스트레이션 도구
+│   └── scrum/                         # 스크럼 기록
 │
 ├── vibe-coding/                       # 🎵 바이브코딩 가이드
 │   ├── README.md
@@ -25,6 +33,9 @@ vive-md/
 │   ├── prompts/
 │   │   ├── README.md
 │   │   └── 예시-프롬프트-모음.md
+│   ├── tools/                         # 도구별 바이브코딩 가이드
+│   │   ├── Claude-Code-바이브코딩-가이드.md
+│   │   └── Kimi-바이브코딩-가이드.md
 │   └── resources/
 │       └── README.md
 │
@@ -76,16 +87,25 @@ vive-md/
 | [prompts/예시-프롬프트-모음.md](./vibe-coding/prompts/예시-프롬프트-모음.md) | 실전 프롬프트 | 역할 기반 프롬프트, 작업 할당 프롬프트, 검증 프롬프트 예시 |
 | [resources/README.md](./vibe-coding/resources/README.md) | 추가 자료 | 도구, 링크, 참고 자료 모음 |
 
+### [vibe-coding/tools/](./vibe-coding/tools/) - 도구별 바이브코딩 가이드
+
+| 문서 | 설명 | 분량 |
+|------|------|------|
+| [Claude-Code-바이브코딩-가이드.md](./vibe-coding/tools/Claude-Code-바이브코딩-가이드.md) | Claude Code 바이브코딩 실전 가이드 | ~36KB |
+| [Kimi-바이브코딩-가이드.md](./vibe-coding/tools/Kimi-바이브코딩-가이드.md) | Kimi 특화 바이브코딩 가이드 | ~40KB |
+
 ---
 
 ## 🔬 논문 분석 문서
 
-### [docs/](./docs/) - 연구 논문 심층 분석
+### [docs/research/](./docs/research/) - 연구 논문 심층 분석
 
 | 문서 | 설명 | 분량 |
 |------|------|------|
-| [multi-agent-orchestration-papers-guide.md](./docs/multi-agent-orchestration-papers-guide.md) | 멀티에이전트 오케스트레이션 논문 가이드 | ~150줄 |
-| [vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md](./docs/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md) | **2025-2026년 종합 리뷰** (16개 논문) | ~780줄 |
+| [multi-agent-orchestration-papers-guide.md](./docs/research/multi-agent-orchestration-papers-guide.md) | 멀티에이전트 오케스트레이션 논문 가이드 | ~150줄 |
+| [vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md](./docs/research/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md) | **2025-2026년 종합 리뷰** (16개 논문) | ~780줄 |
+| [vibe-coding-ontology-research-synthesis.md](./docs/research/vibe-coding-ontology-research-synthesis.md) | 바이브코딩 온톨로지 연구 종합 | - |
+| [debate-2026-02-18T17-43-36.md](./docs/research/debate-2026-02-18T17-43-36.md) | 토론 기록 | - |
 
 ### 분석된 논문 주제
 
@@ -231,10 +251,14 @@ cp "templates/security/보안-가이드.md" my-project/docs/
 cat vibe-coding/README.md
 
 # 2. 논문 분석 문서 참고
-cat docs/multi-agent-orchestration-papers-guide.md
-cat docs/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md
+cat docs/research/multi-agent-orchestration-papers-guide.md
+cat docs/research/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md
 
-# 3. 실전 프롬프트 예시 확인
+# 3. 도구별 실전 가이드 확인
+cat vibe-coding/tools/Claude-Code-바이브코딩-가이드.md
+cat vibe-coding/tools/Kimi-바이브코딩-가이드.md
+
+# 4. 실전 프롬프트 예시 확인
 cat vibe-coding/prompts/예시-프롬프트-모음.md
 ```
 
@@ -245,11 +269,12 @@ cat vibe-coding/prompts/예시-프롬프트-모음.md
 | 카테고리 | 문서 수 | 총 분량 (줄 수) |
 |----------|---------|----------------|
 | 프로젝트 문서 | 3 | ~220줄 |
-| 바이브코딩 라이브러리 | 6 | ~500줄+ |
-| 논문 분석 | 3 | ~1,100줄+ |
+| 바이브코딩 라이브러리 | 8 | ~500줄+ |
+| 바이브코딩 도구 가이드 | 2 | ~76KB |
+| 논문 분석 | 4 | ~1,100줄+ |
 | 기술 스택 가이드 | 6 | ~17,000줄+ |
 | 워터폴 산출물 | 14 | ~5,000줄+ |
-| **합계** | **32+** | **~23,000줄+** |
+| **합계** | **37+** | **~23,000줄+** |
 
 ---
 
@@ -268,10 +293,12 @@ cat vibe-coding/prompts/예시-프롬프트-모음.md
 | **SRS** | [요구사항명세서-SRS.md](./templates/waterfall/01-요구사항분석/요구사항명세서-SRS.md) |
 | **API 설계** | [API설계서.md](./templates/waterfall/02-시스템설계/API설계서.md) |
 | **테스트** | [테스트계획서.md](./templates/waterfall/05-테스트/테스트계획서.md) |
-| **ChatDev** | [multi-agent-orchestration-papers-guide.md](./docs/multi-agent-orchestration-papers-guide.md) |
-| **MetaGPT** | [multi-agent-orchestration-papers-guide.md](./docs/multi-agent-orchestration-papers-guide.md) |
-| **Vibe Coding** | [vibe-coding/README.md](./vibe-coding/README.md), [논문 리뷰](./docs/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md) |
-| **문서 기반 설정** | [문서-기반-프로젝트-설정-가이드.md](./docs/문서-기반-프로젝트-설정-가이드.md) | 템플릿 복사 방식, 프로젝트 초기화 워크플로우 |
+| **ChatDev** | [multi-agent-orchestration-papers-guide.md](./docs/research/multi-agent-orchestration-papers-guide.md) |
+| **MetaGPT** | [multi-agent-orchestration-papers-guide.md](./docs/research/multi-agent-orchestration-papers-guide.md) |
+| **Vibe Coding** | [vibe-coding/README.md](./vibe-coding/README.md), [논문 리뷰](./docs/research/vibe_coding_orchestration_papers_2025_2026_comprehensive_review.md) |
+| **문서 기반 설정** | [문서-기반-프로젝트-설정-가이드.md](./docs/guides/문서-기반-프로젝트-설정-가이드.md) | 템플릿 복사 방식, 프로젝트 초기화 워크플로우 |
+| **Claude Code 바이브코딩** | [Claude-Code-바이브코딩-가이드.md](./vibe-coding/tools/Claude-Code-바이브코딩-가이드.md) |
+| **Kimi 바이브코딩** | [Kimi-바이브코딩-가이드.md](./vibe-coding/tools/Kimi-바이브코딩-가이드.md) |
 
 ---
 
@@ -279,6 +306,7 @@ cat vibe-coding/prompts/예시-프롬프트-모음.md
 
 | 날짜 | 변경 내용 |
 |------|----------|
+| 2026-02-22 | 문서 구조 재구성, tools 가이드 추가, 중복 파일 정리 반영 |
 | 2026-02-18 | 문서 인덱스 (DOCUMENTATION_INDEX.md) 생성 |
 
 ---
@@ -295,4 +323,4 @@ cat vibe-coding/prompts/예시-프롬프트-모음.md
 
 ---
 
-*마지막 업데이트: 2026-02-18*
+*마지막 업데이트: 2026-02-22*

@@ -342,6 +342,11 @@ Agent 1, Agent 2, ... Agent N (도구 사용, 외부 시스템 변경)
 - [Vibe Coding Prompt Engineering - VibeCoding.app](https://vibecoding.app/blog/vibe-coding-prompt-engineering)
 - [11 AI-Assisted Coding Best Practices - Hexaware](https://hexaware.com/blogs/level-up-your-ai-workflow-11-vibe-coding-best-practices-for-real-world-builders/)
 
+### AI 코딩 도구 상세 사용법
+- [Claude Code, Kimi CLI, Codex CLI 실전 사용법](./tools/AI-코딩-도구-실전-사용법.md) - 모델별 상세 명령어 및 설정 가이드
+- [Claude Code 바이브코딩 가이드](./tools/Claude-Code-바이브코딩-가이드.md)
+- [Kimi 바이브코딩 가이드](./tools/Kimi-바이브코딩-가이드.md)
+
 ### 멀티에이전트 오케스트레이션
 - [AI Agent Orchestration Patterns - Microsoft Azure](https://learn.microsoft.com/en-us/azure/architecture/ai-ml/guide/ai-agent-design-patterns)
 - [Vibe Kanban - Orchestrate AI Coding Agents](https://www.vibekanban.com/)

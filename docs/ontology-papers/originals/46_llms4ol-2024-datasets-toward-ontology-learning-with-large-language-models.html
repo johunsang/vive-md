@@ -1,0 +1,1498 @@
+<!DOCTYPE html>
+<html lang="en-US" xml:lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		LLMs4OL 2024 Datasets: Toward Ontology Learning with Large Language Models
+							| Open Conference Proceedings
+			</title>
+
+	
+<link rel="modulepreload" href="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/dist/assets/main-B4G8ACwM.js" />
+<meta name="generator" content="Open Journal Systems 3.3.0.21" />
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/" />
+<meta name="DC.Creator.PersonalName" content="Hamed Babaei Giglou"/>
+<meta name="DC.Creator.PersonalName" content="Jennifer D’Souza"/>
+<meta name="DC.Creator.PersonalName" content="Sameer Sadruddin"/>
+<meta name="DC.Creator.PersonalName" content="Sören Auer"/>
+<meta name="DC.Date.created" scheme="ISO8601" content="2024-10-02"/>
+<meta name="DC.Date.dateSubmitted" scheme="ISO8601" content="2024-09-23"/>
+<meta name="DC.Date.issued" scheme="ISO8601" content="2024-10-02"/>
+<meta name="DC.Date.modified" scheme="ISO8601" content="2024-10-02"/>
+<meta name="DC.Description" xml:lang="en" content="Ontology learning (OL) from unstructured data has evolved significantly, with recent advancements integrating large language models (LLMs) to enhance various aspects of the process. The paper introduces the LLMs4OL 2024 datasets, developed to benchmark and advance research in OL using LLMs. The LLMs4OL 2024 dataset as a key component of the LLMs4OL Challenge, targets three primary OL tasks: Term Typing, Taxonomy Discovery, and Non-Taxonomic Relation Extraction. It encompasses seven domains, i.e. lexosemantics and biological functions, offering a comprehensive resource for evaluating LLM-based OL approaches Each task within the dataset is carefully crafted to facilitate both Few-Shot (FS) and Zero-Shot (ZS) evaluation scenarios, allowing for robust assessment of model performance across different knowledge domains to address a critical gap in the field by offering standardized benchmarks for fair comparison for evaluating LLM applications in OL."/>
+<meta name="DC.Format" scheme="IMT" content="application/pdf"/>
+<meta name="DC.Format" scheme="IMT" content=""/>
+<meta name="DC.Identifier" content="2480"/>
+<meta name="DC.Identifier.pageNumber" content="17-30"/>
+<meta name="DC.Identifier.DOI" content="10.52825/ocp.v4i.2480"/>
+<meta name="DC.Identifier.URI" content="https://www.tib-op.org/ojs/index.php/ocp/article/view/2480"/>
+<meta name="DC.Language" scheme="ISO639-1" content="en"/>
+<meta name="DC.Rights" content="Copyright (c) 2024 Hamed Babaei Giglou, Jennifer D’Souza, Sameer Sadruddin, Sören Auer"/>
+<meta name="DC.Rights" content="https://creativecommons.org/licenses/by/4.0"/>
+<meta name="DC.Source" content="Open Conference Proceedings"/>
+<meta name="DC.Source.ISSN" content="2749-5841"/>
+<meta name="DC.Source.Volume" content="4"/>
+<meta name="DC.Source.URI" content="https://www.tib-op.org/ojs/index.php/ocp"/>
+<meta name="DC.Subject" xml:lang="en" content="Ontology Learning"/>
+<meta name="DC.Subject" xml:lang="en" content="Large Language Models"/>
+<meta name="DC.Subject" xml:lang="en" content="Dataset"/>
+<meta name="DC.Subject" xml:lang="en" content="LLMs4OL Challenge"/>
+<meta name="DC.Title" content="LLMs4OL 2024 Datasets: Toward Ontology Learning with Large Language Models"/>
+<meta name="DC.Type" content="Text.Serial.Journal"/>
+<meta name="DC.Type.articleType" content="LLMs4OL 2024 Task Overview"/>
+<meta name="gs_meta_revision" content="1.1"/>
+<meta name="citation_journal_title" content="Open Conference Proceedings"/>
+<meta name="citation_journal_abbrev" content="Open Conf Proc"/>
+<meta name="citation_issn" content="2749-5841"/> 
+<meta name="citation_author" content="Hamed Babaei Giglou"/>
+<meta name="citation_author_institution" content="Technische Informationsbibliothek (TIB) "/>
+<meta name="citation_author" content="Jennifer D’Souza"/>
+<meta name="citation_author_institution" content="Technische Informationsbibliothek (TIB) "/>
+<meta name="citation_author" content="Sameer Sadruddin"/>
+<meta name="citation_author_institution" content="Technische Informationsbibliothek (TIB) "/>
+<meta name="citation_author" content="Sören Auer"/>
+<meta name="citation_author_institution" content="Technische Informationsbibliothek (TIB) "/>
+<meta name="citation_title" content="LLMs4OL 2024 Datasets: Toward Ontology Learning with Large Language Models"/>
+<meta name="citation_language" content="en"/>
+<meta name="citation_date" content="2024/10/02"/>
+<meta name="citation_volume" content="4"/>
+<meta name="citation_firstpage" content="17"/>
+<meta name="citation_lastpage" content="30"/>
+<meta name="citation_doi" content="10.52825/ocp.v4i.2480"/>
+<meta name="citation_abstract_html_url" content="https://www.tib-op.org/ojs/index.php/ocp/article/view/2480"/>
+<meta name="citation_keywords" xml:lang="en" content="Ontology Learning"/>
+<meta name="citation_keywords" xml:lang="en" content="Large Language Models"/>
+<meta name="citation_keywords" xml:lang="en" content="Dataset"/>
+<meta name="citation_keywords" xml:lang="en" content="LLMs4OL Challenge"/>
+<meta name="citation_pdf_url" content="https://www.tib-op.org/ojs/index.php/ocp/article/download/2480/2308"/>
+<meta name="citation_reference" content="[1] A. Maedche and S. Staab, “Ontology learning,” in Handbook on Ontologies, S. Staab and R. Studer, Eds. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004, pp. 173–190, ISBN : 978-3-540-24750-0. DOI : 10 . 1007 / 978 - 3 - 540 - 24750 - 0 _ 9. [Online]. Available: https://doi.org/10.1007/978-3-540-24750-0_9."/>
+<meta name="citation_reference" content="[2] A. Konys, “Knowledge repository of ontology learning tools from text,” Procedia Computer Science, vol. 159, pp. 1614–1628, 2019."/>
+<meta name="citation_reference" content="[3] Y. Ding and S. Foo, “Ontology research and development. part 2-a review of ontology mapping and evolving,” Journal of information science, vol. 28, no. 5, pp. 375–388, 2002."/>
+<meta name="citation_reference" content="[4] M. Shamsfard and A. Abdollahzadeh Barforoush, “The state of the art in ontology learning: A framework for comparison,” Knowl. Eng. Rev., vol. 18, no. 4, pp. 293–316, Dec. 2003, ISSN : 0269-8889. DOI : 10.1017/S0269888903000687. [Online]. Available: https://doi.org/10.1017/S0269888903000687."/>
+<meta name="citation_reference" content="[5] P. Buitelaar, P. Cimiano, and B. Magnini, Ontology learning from text: methods, evaluation and applications. IOS press, 2005, vol. 123."/>
+<meta name="citation_reference" content="[6] M. Hazman, S. R. El-Beltagy, and A. Rafea, “A survey of ontology learning approaches,” International Journal of Computer Applications, vol. 22, no. 9, pp. 36–43, 2011."/>
+<meta name="citation_reference" content="[7] M. N. Asim, M. Wasim, M. U. G. Khan, W. Mahmood, and H. M. Abbasi, “A survey of ontology learning techniques and applications,” Database, vol. 2018, bay101, Oct. 2018, ISSN: 1758-0463. DOI: 10.1093/database/bay101. eprint: https://academic.oup.com/database/article-pdf/doi/10.1093/database/bay101/27329264/bay101.pdf. [Online]. Available: https://doi.org/10.1093/database/bay101."/>
+<meta name="citation_reference" content="[8] H. Babaei Giglou, J. D’Souza, and S. Auer, “Llms4ol: Large language models for ontology learning,” in The Semantic Web – ISWC 2023, T. R. Payne, V. Presutti, G. Qi, et al., Eds., Cham: Springer Nature Switzerland, 2023, pp. 408–427, ISBN: 978-3-031-47240-4."/>
+<meta name="citation_reference" content="[9] F. Petroni, T. Rocktäschel, P. Lewis, et al., Language models as knowledge bases?2019. arXiv: 1909.01066 [cs.CL]. [Online]. Available: https://arxiv.org/abs/1909.01066."/>
+<meta name="citation_reference" content="[10] B. Zhang, V. A. Carriero, K. Schreiberhuber, et al., “Ontochat: A framework for conversational ontology engineering using language models,” arXiv preprint arXiv:2403.05921, 2024."/>
+<meta name="citation_reference" content="[11] V. K. Kommineni, B. König-Ries, and S. Samuel, “From human experts to machines: An llm supported approach to ontology and knowledge graph construction,” arXiv preprint arXiv:2403.08345, 2024."/>
+<meta name="citation_reference" content="[12] M. J. Saeedizade and E. Blomqvist, “Navigating ontology development with large language models,” in European Semantic Web Conference, Springer, 2024, pp. 143–161."/>
+<meta name="citation_reference" content="[13] R. Du, H. An, K. Wang, and W. Liu, A short review for ontology learning: Stride to large language models trend, 2024. arXiv: 2404.14991 [cs.IR]. [Online]. Available: https://arxiv.org/abs/2404.14991."/>
+<meta name="citation_reference" content="[14] H. Khorashadizadeh, F. Z. Amara, M. Ezzabady, et al., Research trends for the inter-play between large language models and knowledge graphs, 2024. arXiv: 2406.08223 [cs.AI]. [Online]. Available: https://arxiv.org/abs/2406.08223."/>
+<meta name="citation_reference" content="[15] H. Babaei Giglou, J. D’Souza, and S. Auer, “Llms4ol 2024 overview: The 1st large language models for ontology learning challenge,” Open Conference Proceedings, vol. 4, Oct. 2024."/>
+<meta name="citation_reference" content="[16] A. Maedche and S. Staab, “Ontology learning for the semantic web,” IEEE Intelligent systems, vol. 16, no. 2, pp. 72–79, 2001."/>
+<meta name="citation_reference" content="[17] G. A. Miller, “Wordnet: A lexical database for english,” Communications of the ACM, vol. 38, no. 11, pp. 39–41, 1995."/>
+<meta name="citation_reference" content="[18] Geonames geographical database, 2023. [Online]. Available: http://www.geonames.org/."/>
+<meta name="citation_reference" content="[19] O. Bodenreider, “The Unified Medical Language System (UMLS): integrating biomedical terminology,” Nucleic Acids Research, vol. 32, no. suppl 1, pp. D267–D270, Jan. 2004, ISSN : 0305-1048. DOI : 10.1093/nar/gkh061.eprint: https://academic.oup.com/nar/article - pdf / 32 / suppl _1 / D267 / 7621558 / gkh061 . pdf. [Online]. Available: https://doi.org/10.1093/nar/gkh061."/>
+<meta name="citation_reference" content="[20] National Library of Medicine (US), US Edition of SNOMED CT, http://www.nlm.nih.gov/research/umls/Snomed/us_edition.html, Bethesda, MD, 2013."/>
+<meta name="citation_reference" content="[21] National Cancer Institute (US), NCI Enterprise Vocabulary Services (EVS), https://www.cancer.gov/research/resources/terminology, Bethesda, MD, 2015."/>
+<meta name="citation_reference" content="[22] Medicomp Systems, Inc., MEDCIN, http://www.medicomp.com/index _ html. htm, Chantilly, VA, 2004."/>
+<meta name="citation_reference" content="[23] S. Carbon and C. Mungall, Gene ontology data archive, version 2024-01-17, Zenodo, Jan. 2024. DOI : 10.5281/zenodo.10536401. [Online]. Available: https://doi.org/10.5281/zenodo.10536401."/>
+<meta name="citation_reference" content="[24] S. Auer, C. Bizer, G. Kobilarov, J. Lehmann, R. Cyganiak, and Z. Ives, “Dbpedia: A nucleus for a web of open data,” in The Semantic Web, K. Aberer, K.-S. Choi, N. Noy, et al., Eds., Berlin, Heidelberg: Springer Berlin Heidelberg, 2007, pp. 722–735, ISBN : 978-3-540-76298-0."/>
+<meta name="citation_reference" content="[25] D. M. Dooley, E. J. Griffiths, G. S. Gosal, et al., “FoodOn: a harmonized food ontology to increase global food traceability, quality control and data integration,” NPJ Science of Food, vol. 2, p. 23, Dec. 2018. DOI: 10.1038/s41538- 018- 0032- 6. [Online]. Available: https://www.nature.com/articles/s41538-018-0032-6."/>
+<meta name="citation_reference" content="[26] P. F. Patel-Schneider, “Analyzing schema.org,” in The Semantic Web – ISWC 2014, P. Mika, T. Tudorache, A. Bernstein, et al., Eds., Cham: Springer International Publishing, 2014, pp. 261–276, ISBN : 978-3-319-11964-9."/>
+<meta name="citation_reference" content="[27] T. Dettmers, P. Minervini, P. Stenetorp, and S. Riedel, Convolutional 2d knowledge graph embeddings, 2018. arXiv: 1707 . 01476 [cs.LG]. [Online]. Available: https://arxiv.org/abs/1707.01476."/>
+<meta name="citation_reference" content="[28] GeoNames, Geonames feature codes, https://www.geonames.org/export/codes.html, 2024."/>
+<link rel="alternate" type="application/atom+xml" href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/atom">
+<link rel="alternate" type="application/rdf+xml" href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/rss">
+<link rel="alternate" type="application/rss+xml" href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/rss2">
+	<link rel="stylesheet" href="https://www.tib-op.org/ojs/index.php/ocp/$$$call$$$/page/page/css?name=stylesheet" type="text/css" /><style type="text/css">
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVl2YZDLWuGJpnzaiwFXS9tYtpY19-7DRs5.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVl2YZDLWuGJpnzaiwFXS9tYtpY1927DRs5.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVl2YZDLWuGJpnzaiwFXS9tYtpY19y7DRs5.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVl2YZDLWuGJpnzaiwFXS9tYtpY19K7DQ.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVn2YZDLWuGJpnzaiwFXS9tYtpQ59CjCQ.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVn2YZDLWuGJpnzaiwFXS9tYtpS59CjCQ.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVn2YZDLWuGJpnzaiwFXS9tYtpT59CjCQ.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Hanken Grotesk';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/hankengrotesk/ieVn2YZDLWuGJpnzaiwFXS9tYtpd59A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+        
+
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/quicksand/6xKtdSZaM9iE8KbpRA_hJFQNcOM.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/quicksand/6xKtdSZaM9iE8KbpRA_hJVQNcOM.woff2) format('woff2');
+  unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Quicksand';
+  font-style: normal;
+  font-weight: 300 700;
+  font-display: swap;
+  src: url(https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/fonts/quicksand/6xKtdSZaM9iE8KbpRA_hK1QN.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+        </style><link rel="stylesheet" href="https://www.tib-op.org/ojs/lib/pkp/styles/fontawesome/fontawesome.css?v=3.3.0.21" type="text/css" /><style type="text/css">body {--font: 'Hanken Grotesk', system-ui, -apple-system, BlinkMacSystemFont, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+--header-bg: #005C5F;
+--header-text: #fff;
+--button-bg: #005C5F;
+--button-text: #fff;}</style><link rel="stylesheet" href="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/dist/assets/main-C39F_Cyi.css?v=3.3.0.21" type="text/css" /><link rel="stylesheet" href="https://www.tib-op.org/ojs/plugins/generic/orcidProfile/css/orcidProfile.css?v=3.3.0.21" type="text/css" />
+</head>
+<body class="pkp_page_article pkp_op_view" dir="ltr">
+
+	<div class="pkp_structure_page">
+
+				<header class="pkp_structure_head" id="headerNavigationContainer" role="banner">
+						<nav class="cmp_skip_to_content" aria-label="Jump to content links">
+	<a href="#pkp_content_main">Skip to main content</a>
+	<a href="#siteNav">Skip to main navigation menu</a>
+		<a href="#pkp_content_footer">Skip to site footer</a>
+</nav>
+
+<script src="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/js/cookieconsent.min.js"></script>
+<script src="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/js/cookieconsent.js"></script>
+<script src="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/js/cookieconsent-extension.js"></script>
+
+<div
+  class="
+    tibop-header
+          "
+>
+  <a
+    class="tibop-header-link"
+    href="https://www.tib-op.org/ojs/index.php/index"
+  >
+    <svg width="641" height="247" viewBox="0 0 641 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="90.9998" y="35" width="454" height="25" rx="12.5" fill="#8BBDBF"/>
+  <rect x="407" y="82" width="186" height="25" rx="12.5" fill="#005C5F"/>
+  <rect x="331" y="127" width="310" height="25" rx="12.5" fill="#ABE8DD"/>
+  <path d="M42.3055 60.0743H39.4949C39.0469 60.0803 38.6031 59.9885 38.1954 59.8054C37.7878 59.6223 37.4263 59.3526 37.1371 59.0155C36.5833 58.4162 36.2767 57.6348 36.2774 56.8244V3.17156C36.2876 2.38529 36.596 1.63122 37.1421 1.0576C37.4326 0.72376 37.7937 0.456545 38.2001 0.274698C38.6066 0.09285 39.0485 0.000774126 39.4949 0.00491732H42.3055C42.7701 -0.0104264 43.232 0.0812923 43.6542 0.272772C44.0765 0.464251 44.4476 0.750199 44.7379 1.10785C45.2353 1.68616 45.512 2.41736 45.5205 3.17524V56.8244C45.5202 57.6078 45.2436 58.3667 44.7379 58.9714C44.4469 59.3283 44.0758 59.6138 43.6536 59.8052C43.2315 59.9966 42.77 60.0887 42.3055 60.0743Z" fill="#4A4A4A"/>
+  <path d="M17.9232 60.0743H15.1126C14.6633 60.0813 14.2181 59.9896 13.8092 59.8061C13.4003 59.6225 13.038 59.3516 12.7486 59.0131C12.1976 58.4134 11.8929 57.6332 11.8939 56.8243V9.10901H3.70212C2.9069 9.09696 2.14428 8.7958 1.56086 8.26343C1.21804 7.97769 0.943727 7.62069 0.757644 7.2181C0.571561 6.81551 0.478327 6.37732 0.484638 5.93501V3.16665C0.469256 2.70922 0.56247 2.25457 0.756866 1.83886C0.951261 1.42315 1.24147 1.05787 1.60441 0.772065C2.19252 0.282005 2.93557 0.00901368 3.70585 1.02559e-05H29.1633C29.9623 -0.0019323 30.7367 0.272133 31.3518 0.774514C31.7128 1.06094 32.0011 1.42621 32.194 1.84142C32.3868 2.25662 32.4789 2.71034 32.4628 3.16665V5.93501C32.4697 6.37727 32.3768 6.81552 32.1909 7.21816C32.005 7.62079 31.7307 7.97779 31.3879 8.26343C30.7788 8.80776 29.9857 9.1092 29.1633 9.10901H21.1382V56.8243C21.1381 57.608 20.861 58.3671 20.3544 58.9714C20.0642 59.3289 19.6933 59.6147 19.2713 59.8062C18.8492 59.9977 18.3876 60.0895 17.9232 60.0743Z" fill="#4A4A4A"/>
+  <path d="M67.9056 60.0746H55.9688C55.5198 60.0815 55.0748 59.9901 54.666 59.807C54.2572 59.6239 53.8947 59.3536 53.6048 59.0158C53.0498 58.4168 52.7415 57.6355 52.7401 56.8246V3.17183C52.7253 2.7143 52.8188 2.25966 53.0132 1.84384C53.2075 1.42803 53.4974 1.06245 53.8599 0.776012C54.4489 0.287643 55.1915 0.0152688 55.9613 0.00518709H65.3003C67.3727 -0.0108496 69.4442 0.100886 71.5025 0.339742C73.1784 0.518102 74.8032 1.01547 76.2865 1.80419C78.5311 3.04505 80.2847 4.99596 81.2632 7.34092C82.3134 9.78219 82.8424 12.4102 82.8172 15.0614C82.8172 19.5308 82.3444 22.6937 81.369 24.7329C80.8382 25.8221 80.1201 26.8126 79.2464 27.6606C79.0996 27.7917 78.9416 27.9241 78.7736 28.0552C80.3514 29.0057 81.6071 30.3961 82.3818 32.0503C83.6072 34.9431 84.1795 38.0638 84.0589 41.1961C84.0577 43.3609 83.9152 45.5234 83.6322 47.6703C83.3627 49.8437 82.6405 51.9389 81.5108 53.8246C80.3055 55.7641 78.5804 57.3386 76.5253 58.3749C73.8333 59.6179 70.876 60.201 67.9056 60.0746ZM61.9895 50.9693H67.4527C68.5727 50.9858 69.6898 50.8526 70.7734 50.5734C71.5877 50.3512 72.3199 49.9028 72.8824 49.2818C73.5705 48.4437 74.0491 47.4581 74.2796 46.4044C74.6821 44.6147 74.8626 42.7835 74.8171 40.951C74.864 39.5287 74.6667 38.1088 74.2335 36.7512C73.948 35.8933 73.4138 35.1363 72.697 34.5736C71.8851 34.0084 70.9541 33.6314 69.9734 33.4706C68.5687 33.2285 67.1443 33.1145 65.7183 33.1299H61.9857L61.9895 50.9693ZM61.9895 24.0222H65.8813C67.0301 24.0251 68.178 23.9604 69.319 23.8285C70.15 23.7443 70.9421 23.4394 71.6108 22.9462C72.3287 22.3285 72.8505 21.5201 73.1138 20.6178C73.5954 18.9158 73.8053 17.1505 73.7359 15.385C73.8015 14.1463 73.5953 12.9082 73.1312 11.7551C72.8022 11.0435 72.2723 10.4402 71.6046 10.0174C70.8287 9.58032 69.962 9.323 69.0702 9.26492C67.9043 9.16198 66.6091 9.10928 65.2244 9.10928H61.9895V24.0222Z" fill="#4A4A4A"/>
+  <path d="M613.459 246.666C607.812 246.666 602.537 245.625 597.633 243.545C592.729 241.464 588.419 238.604 584.704 234.963C580.988 231.248 578.053 226.975 575.899 222.145C573.818 217.316 572.778 212.114 572.778 206.541C572.778 200.969 573.818 195.767 575.899 190.938C578.053 186.108 580.988 181.873 584.704 178.232C588.419 174.517 592.729 171.619 597.633 169.538C602.537 167.458 607.812 166.417 613.459 166.417C616.952 166.417 620.332 166.789 623.602 167.532C626.871 168.275 629.88 169.39 632.63 170.876C633.744 171.47 634.562 172.287 635.082 173.328C635.676 174.294 635.973 175.297 635.973 176.337C635.973 178.12 635.379 179.718 634.19 181.13C633.001 182.541 631.478 183.247 629.62 183.247C629.026 183.247 628.394 183.173 627.726 183.024C627.131 182.876 626.537 182.653 625.942 182.356C624.085 181.538 622.116 180.907 620.035 180.461C617.955 180.015 615.763 179.792 613.459 179.792C608.63 179.792 604.208 181.018 600.196 183.47C596.258 185.848 593.1 189.08 590.722 193.167C588.419 197.179 587.267 201.637 587.267 206.541C587.267 211.371 588.419 215.829 590.722 219.916C593.1 224.003 596.258 227.272 600.196 229.724C604.208 232.102 608.63 233.291 613.459 233.291C615.688 233.291 618.14 233.068 620.815 232.622C623.49 232.176 625.682 231.582 627.391 230.839L626.388 234.183V215.124L628.283 216.795H615.911C613.979 216.795 612.345 216.164 611.007 214.901C609.744 213.638 609.113 212.04 609.113 210.108C609.113 208.176 609.744 206.579 611.007 205.315C612.345 204.052 613.979 203.421 615.911 203.421H634.19C636.122 203.421 637.719 204.089 638.983 205.427C640.246 206.69 640.877 208.288 640.877 210.22V233.848C640.877 235.334 640.506 236.56 639.763 237.526C639.094 238.492 638.314 239.272 637.422 239.867C634.004 241.947 630.252 243.619 626.165 244.882C622.153 246.071 617.918 246.666 613.459 246.666Z" fill="#4A4A4A"/>
+  <path d="M553.903 167.532C555.686 167.532 557.135 168.126 558.25 169.315C559.364 170.504 559.921 171.99 559.921 173.773V238.752C559.921 240.684 559.253 242.319 557.915 243.656C556.652 244.919 555.054 245.551 553.123 245.551C552.157 245.551 551.153 245.402 550.113 245.105C549.147 244.734 548.404 244.251 547.884 243.656L504.082 188.04L506.98 186.257V239.309C506.98 241.093 506.385 242.579 505.197 243.768C504.082 244.957 502.596 245.551 500.738 245.551C498.955 245.551 497.506 244.957 496.392 243.768C495.277 242.579 494.72 241.093 494.72 239.309V174.331C494.72 172.399 495.351 170.801 496.614 169.538C497.952 168.201 499.587 167.532 501.519 167.532C502.559 167.532 503.636 167.755 504.751 168.201C505.865 168.572 506.683 169.167 507.203 169.984L549.667 224.151L547.773 225.489V173.773C547.773 171.99 548.33 170.504 549.445 169.315C550.559 168.126 552.045 167.532 553.903 167.532Z" fill="#4A4A4A"/>
+  <path d="M477.958 238.752C477.958 240.684 477.252 242.319 475.84 243.656C474.428 244.919 472.794 245.551 470.936 245.551C468.856 245.551 467.184 244.919 465.921 243.656C464.657 242.319 464.026 240.684 464.026 238.752V174.331C464.026 172.399 464.695 170.801 466.032 169.538C467.37 168.201 469.078 167.532 471.159 167.532C472.942 167.532 474.503 168.201 475.84 169.538C477.252 170.801 477.958 172.399 477.958 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M391.05 167.532C392.833 167.532 394.394 168.201 395.731 169.538C397.143 170.801 397.849 172.399 397.849 174.331V238.752C397.849 240.684 397.143 242.319 395.731 243.656C394.32 244.919 392.685 245.551 390.827 245.551C388.747 245.551 387.075 244.919 385.812 243.656C384.549 242.319 383.917 240.684 383.917 238.752V174.331C383.917 172.399 384.586 170.801 385.923 169.538C387.261 168.201 388.97 167.532 391.05 167.532ZM440.425 167.532C442.506 167.532 444.177 168.201 445.441 169.538C446.704 170.801 447.335 172.399 447.335 174.331V238.752C447.335 240.684 446.667 242.319 445.329 243.656C444.066 244.919 442.357 245.551 440.202 245.551C438.419 245.551 436.821 244.919 435.41 243.656C434.072 242.319 433.403 240.684 433.403 238.752V174.331C433.403 172.399 434.109 170.801 435.521 169.538C436.933 168.201 438.567 167.532 440.425 167.532ZM390.716 199.966H440.425V212.783H390.716V199.966Z" fill="#4A4A4A"/>
+  <path d="M342.491 246.666C337.29 246.666 332.609 246.034 328.448 244.771C324.287 243.433 320.311 241.13 316.522 237.861C315.556 237.043 314.813 236.114 314.293 235.074C313.773 234.034 313.513 232.994 313.513 231.953C313.513 230.244 314.107 228.758 315.296 227.495C316.559 226.158 318.119 225.489 319.977 225.489C321.389 225.489 322.652 225.935 323.767 226.826C326.59 229.13 329.377 230.876 332.126 232.065C334.949 233.254 338.404 233.848 342.491 233.848C345.24 233.848 347.767 233.439 350.07 232.622C352.374 231.73 354.231 230.579 355.643 229.167C357.055 227.681 357.761 226.009 357.761 224.151C357.761 221.922 357.092 220.028 355.754 218.467C354.417 216.907 352.374 215.607 349.624 214.566C346.875 213.452 343.383 212.597 339.147 212.003C335.135 211.408 331.606 210.517 328.559 209.328C325.513 208.065 322.949 206.504 320.869 204.647C318.863 202.715 317.339 200.486 316.299 197.959C315.259 195.359 314.739 192.461 314.739 189.266C314.739 184.436 315.965 180.312 318.417 176.894C320.943 173.476 324.324 170.876 328.559 169.092C332.794 167.309 337.476 166.417 342.603 166.417C347.432 166.417 351.891 167.16 355.977 168.647C360.138 170.058 363.519 171.879 366.12 174.108C368.275 175.817 369.352 177.786 369.352 180.015C369.352 181.65 368.72 183.136 367.457 184.473C366.194 185.811 364.708 186.479 362.999 186.479C361.884 186.479 360.881 186.145 359.99 185.476C358.801 184.436 357.203 183.47 355.197 182.578C353.191 181.613 351.073 180.832 348.844 180.238C346.615 179.569 344.535 179.235 342.603 179.235C339.408 179.235 336.695 179.643 334.466 180.461C332.312 181.278 330.677 182.393 329.562 183.805C328.448 185.216 327.89 186.851 327.89 188.709C327.89 190.938 328.522 192.795 329.785 194.281C331.123 195.693 333.017 196.845 335.469 197.736C337.921 198.554 340.856 199.297 344.274 199.966C348.733 200.783 352.634 201.749 355.977 202.863C359.395 203.978 362.219 205.427 364.448 207.21C366.677 208.919 368.349 211.111 369.463 213.786C370.578 216.387 371.135 219.582 371.135 223.371C371.135 228.201 369.798 232.362 367.123 235.854C364.448 239.347 360.919 242.022 356.535 243.879C352.225 245.737 347.544 246.666 342.491 246.666Z" fill="#4A4A4A"/>
+  <path d="M300.652 238.752C300.652 240.684 299.946 242.319 298.534 243.656C297.122 244.919 295.488 245.551 293.63 245.551C291.549 245.551 289.878 244.919 288.614 243.656C287.351 242.319 286.72 240.684 286.72 238.752V174.331C286.72 172.399 287.388 170.801 288.726 169.538C290.063 168.201 291.772 167.532 293.853 167.532C295.636 167.532 297.197 168.201 298.534 169.538C299.946 170.801 300.652 172.399 300.652 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M267.157 232.511C269.088 232.511 270.686 233.142 271.949 234.405C273.287 235.594 273.955 237.155 273.955 239.087C273.955 240.944 273.287 242.505 271.949 243.768C270.686 244.957 269.088 245.551 267.157 245.551H230.933C229.002 245.551 227.367 244.919 226.029 243.656C224.766 242.319 224.135 240.684 224.135 238.752V174.331C224.135 172.399 224.803 170.801 226.141 169.538C227.478 168.201 229.187 167.532 231.268 167.532C233.051 167.532 234.612 168.201 235.949 169.538C237.361 170.801 238.067 172.399 238.067 174.331V234.405L235.615 232.511H267.157Z" fill="#4A4A4A"/>
+  <path d="M185.986 167.532C193.119 167.532 198.432 169.204 201.924 172.547C205.417 175.891 207.163 180.832 207.163 187.371C207.163 190.863 206.308 193.947 204.599 196.622C202.89 199.223 200.364 201.266 197.02 202.752C193.677 204.164 189.553 204.87 184.649 204.87L185.095 199.854C187.398 199.854 190.036 200.189 193.008 200.857C195.98 201.452 198.841 202.566 201.59 204.201C204.414 205.761 206.717 207.99 208.5 210.888C210.358 213.712 211.287 217.353 211.287 221.811C211.287 226.715 210.469 230.727 208.835 233.848C207.274 236.969 205.194 239.384 202.593 241.093C199.993 242.802 197.206 243.991 194.234 244.659C191.262 245.254 188.401 245.551 185.652 245.551H157.899C155.968 245.551 154.333 244.919 152.995 243.656C151.732 242.319 151.101 240.684 151.101 238.752V174.331C151.101 172.399 151.732 170.801 152.995 169.538C154.333 168.201 155.968 167.532 157.899 167.532H185.986ZM183.98 180.684H164.141L165.59 178.9V199.074L164.252 198.071H184.314C186.469 198.071 188.401 197.365 190.11 195.953C191.819 194.541 192.674 192.498 192.674 189.823C192.674 186.628 191.856 184.325 190.222 182.913C188.661 181.427 186.581 180.684 183.98 180.684ZM184.872 211.223H164.587L165.59 210.331V233.848L164.475 232.734H185.652C189.07 232.734 191.782 231.842 193.788 230.059C195.794 228.201 196.798 225.452 196.798 221.811C196.798 218.467 196.129 216.052 194.791 214.566C193.454 213.08 191.856 212.151 189.999 211.78C188.141 211.408 186.432 211.223 184.872 211.223Z" fill="#4A4A4A"/>
+  <path d="M127.909 167.421C129.841 167.421 131.401 168.089 132.59 169.427C133.779 170.69 134.374 172.287 134.374 174.219V214.566C134.374 220.734 133.036 226.195 130.361 230.95C127.761 235.706 124.157 239.421 119.55 242.096C114.943 244.771 109.593 246.108 103.5 246.108C97.4074 246.108 92.0204 244.771 87.3392 242.096C82.7324 239.421 79.0915 235.706 76.4166 230.95C73.8159 226.195 72.5156 220.734 72.5156 214.566V174.219C72.5156 172.287 73.1844 170.69 74.5218 169.427C75.8593 168.089 77.5683 167.421 79.6488 167.421C81.3578 167.421 82.881 168.089 84.2185 169.427C85.6303 170.69 86.3361 172.287 86.3361 174.219V214.566C86.3361 218.282 87.1163 221.514 88.6767 224.263C90.3114 226.938 92.4291 229.018 95.0297 230.504C97.7046 231.991 100.528 232.734 103.5 232.734C106.695 232.734 109.668 231.991 112.417 230.504C115.166 229.018 117.395 226.938 119.104 224.263C120.813 221.514 121.668 218.282 121.668 214.566V174.219C121.668 172.287 122.225 170.69 123.339 169.427C124.454 168.089 125.977 167.421 127.909 167.421Z" fill="#4A4A4A"/>
+  <path d="M37.5699 167.532C41.4337 167.532 45.0374 168.647 48.3811 170.876C51.7991 173.105 54.5483 176.114 56.6288 179.904C58.7093 183.693 59.7496 187.928 59.7496 192.61C59.7496 197.216 58.7093 201.415 56.6288 205.204C54.5483 208.994 51.7991 212.04 48.3811 214.343C45.0374 216.573 41.4337 217.687 37.5699 217.687H17.062L18.1766 215.681V238.752C18.1766 240.684 17.5821 242.319 16.3933 243.656C15.2044 244.919 13.644 245.551 11.7121 245.551C9.85454 245.551 8.33132 244.919 7.14245 243.656C5.95359 242.319 5.35916 240.684 5.35916 238.752V174.331C5.35916 172.399 5.99074 170.801 7.25391 169.538C8.59138 168.201 10.2261 167.532 12.158 167.532H37.5699ZM37.5699 204.981C38.9817 204.981 40.3563 204.387 41.6937 203.198C43.0312 202.009 44.1458 200.486 45.0374 198.628C45.9291 196.696 46.3749 194.69 46.3749 192.61C46.3749 190.455 45.9291 188.448 45.0374 186.591C44.1458 184.733 43.0312 183.247 41.6937 182.133C40.3563 180.944 38.9817 180.349 37.5699 180.349H16.8391L18.1766 178.343V206.764L16.9506 204.981H37.5699Z" fill="#4A4A4A"/>
+  <path d="M280.052 73.4911C281.836 73.4911 283.285 74.0856 284.399 75.2744C285.514 76.4633 286.071 77.9494 286.071 79.7327V144.711C286.071 146.643 285.402 148.278 284.065 149.615C282.802 150.879 281.204 151.51 279.272 151.51C278.306 151.51 277.303 151.362 276.263 151.064C275.297 150.693 274.554 150.21 274.034 149.615L230.232 93.999L233.129 92.2157V145.269C233.129 147.052 232.535 148.538 231.346 149.727C230.232 150.916 228.746 151.51 226.888 151.51C225.105 151.51 223.656 150.916 222.541 149.727C221.427 148.538 220.869 147.052 220.869 145.269V80.29C220.869 78.3581 221.501 76.7605 222.764 75.4974C224.102 74.1599 225.736 73.4911 227.668 73.4911C228.708 73.4911 229.786 73.7141 230.9 74.1599C232.015 74.5314 232.832 75.1258 233.352 75.9432L275.817 130.111L273.922 131.448V79.7327C273.922 77.9494 274.48 76.4633 275.594 75.2744C276.709 74.0856 278.195 73.4911 280.052 73.4911Z" fill="#4A4A4A"/>
+  <path d="M163.886 73.4911H201.224C203.155 73.4911 204.753 74.1227 206.016 75.3859C207.354 76.5748 208.022 78.1351 208.022 80.067C208.022 81.9246 207.354 83.4479 206.016 84.6367C204.753 85.7513 203.155 86.3086 201.224 86.3086H170.016L171.019 84.4138V106.148L170.127 105.256H196.208C198.14 105.256 199.737 105.888 201.001 107.151C202.338 108.34 203.007 109.9 203.007 111.832C203.007 113.69 202.338 115.213 201.001 116.402C199.737 117.516 198.14 118.073 196.208 118.073H170.462L171.019 117.182V139.696L170.127 138.693H201.224C203.155 138.693 204.753 139.362 206.016 140.699C207.354 141.962 208.022 143.448 208.022 145.157C208.022 147.015 207.354 148.538 206.016 149.727C204.753 150.916 203.155 151.51 201.224 151.51H163.886C161.954 151.51 160.319 150.879 158.982 149.615C157.719 148.278 157.087 146.643 157.087 144.711V80.29C157.087 78.3581 157.719 76.7605 158.982 75.4974C160.319 74.1599 161.954 73.4911 163.886 73.4911Z" fill="#4A4A4A"/>
+  <path d="M122.141 73.4911C126.005 73.4911 129.609 74.6057 132.953 76.8348C136.371 79.0639 139.12 82.0732 141.2 85.8627C143.281 89.6522 144.321 93.8876 144.321 98.5687C144.321 103.176 143.281 107.374 141.2 111.163C139.12 114.953 136.371 117.999 132.953 120.303C129.609 122.532 126.005 123.646 122.141 123.646H101.633L102.748 121.64V144.711C102.748 146.643 102.154 148.278 100.965 149.615C99.7759 150.879 98.2155 151.51 96.2836 151.51C94.426 151.51 92.9028 150.879 91.7139 149.615C90.525 148.278 89.9306 146.643 89.9306 144.711V80.29C89.9306 78.3581 90.5622 76.7605 91.8254 75.4974C93.1628 74.1599 94.7975 73.4911 96.7294 73.4911H122.141ZM122.141 110.94C123.553 110.94 124.928 110.346 126.265 109.157C127.603 107.968 128.717 106.445 129.609 104.587C130.501 102.655 130.946 100.649 130.946 98.5687C130.946 96.4139 130.501 94.4077 129.609 92.5501C128.717 90.6925 127.603 89.2064 126.265 88.0919C124.928 86.903 123.553 86.3086 122.141 86.3086H101.411L102.748 84.3024V112.724L101.522 110.94H122.141Z" fill="#4A4A4A"/>
+  <path d="M77.1367 112.501C77.1367 118.073 76.2079 123.275 74.3503 128.104C72.4927 132.934 69.8549 137.207 66.4369 140.922C63.0933 144.563 59.0809 147.423 54.3997 149.504C49.7929 151.585 44.7402 152.625 39.2417 152.625C33.7432 152.625 28.6906 151.585 24.0837 149.504C19.4769 147.423 15.4645 144.563 12.0465 140.922C8.70285 137.207 6.10221 132.934 4.24462 128.104C2.38702 123.275 1.45822 118.073 1.45822 112.501C1.45822 106.928 2.38702 101.727 4.24462 96.8969C6.10221 92.0671 8.70285 87.8318 12.0465 84.1909C15.4645 80.4757 19.4769 77.5779 24.0837 75.4973C28.6906 73.4168 33.7432 72.3766 39.2417 72.3766C44.7402 72.3766 49.7929 73.4168 54.3997 75.4973C59.0809 77.5779 63.0933 80.4757 66.4369 84.1909C69.8549 87.8318 72.4927 92.0671 74.3503 96.8969C76.2079 101.727 77.1367 106.928 77.1367 112.501ZM62.6474 112.501C62.6474 107.522 61.6443 103.027 59.6381 99.0145C57.6319 94.9278 54.8827 91.6956 51.3904 89.3179C47.8981 86.9401 43.8486 85.7513 39.2417 85.7513C34.6349 85.7513 30.5853 86.9401 27.0931 89.3179C23.6008 91.6956 20.8515 94.8907 18.8453 98.9031C16.9134 102.915 15.9475 107.448 15.9475 112.501C15.9475 117.479 16.9134 122.012 18.8453 126.098C20.8515 130.111 23.6008 133.306 27.0931 135.683C30.5853 138.061 34.6349 139.25 39.2417 139.25C43.8486 139.25 47.8981 138.061 51.3904 135.683C54.8827 133.306 57.6319 130.111 59.6381 126.098C61.6443 122.012 62.6474 117.479 62.6474 112.501Z" fill="#4A4A4A"/>
+</svg>
+  </a>
+  <div class="tibop-header-right">
+          <form
+        action="https://www.tib-op.org/ojs/index.php/ocp/search"
+        class="tibop-header-search"
+        method="GET"
+      >
+        <label class="tibop-header-search-wrapper">
+          <span class="pkp_screen_reader">
+            Search
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+  <path d="M140-241.54q-8.5 0-14.25-5.76-5.75-5.75-5.75-14.27 0-8.51 5.75-14.24t14.25-5.73h342.31q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24t-14.25 5.73H140Zm0-191.54q-8.5 0-14.25-5.75-5.75-5.76-5.75-14.27 0-8.52 5.75-14.25t14.25-5.73h138.46q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24t-14.25 5.73H140Zm0-191.54q-8.5 0-14.25-5.75-5.75-5.76-5.75-14.27t5.75-14.24q5.75-5.74 14.25-5.74h138.46q8.5 0 14.25 5.76t5.75 14.27q0 8.51-5.75 14.24t-14.25 5.73H140Zm416.92 265.39q-67.35 0-114.83-46.58-47.47-46.57-47.47-113.81 0-67.23 47.52-113.8Q489.67-680 557.11-680q67.43 0 114.77 46.58 47.35 46.57 47.35 113.42 0 26.69-8.88 52.12-8.89 25.42-25.89 46.34l141.39 139.08q6.38 5.36 6.38 13.64 0 8.28-6.38 14.67-5.36 5.61-13.64 5.61-8.29 0-14.67-5.61L656.15-393.23q-21.69 16.23-47.11 25.11-25.42 8.89-52.12 8.89Zm0-40q50.96 0 86.64-35 35.67-35 35.67-85.39 0-50.38-35.67-85.38-35.68-35-86.64-35t-86.63 35q-35.67 35-35.67 85.38 0 50.39 35.67 85.39t86.63 35Z"/>
+</svg>          <input
+            type="search"
+            name="query"
+            placeholder="Search"
+          >
+        </label>
+        <button
+          class="pkp_screen_reader"
+          type="submit"
+        >
+          Search
+        </button>
+      </form>
+        
+          <div class="tibop-header-account-wrapper">
+        <button
+          aria-expanded="false"
+          aria-haspopup="true"
+          class="dropdown-toggle"
+          data-toggle="dropdown"
+          id="tibopUserDropdown"
+        >
+          <span class="pkp_screen_reader">
+            Account
+          </span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">  <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+  <path fill="currentColor" d="M399 384.2C376.9 345.8 335.4 320 288 320l-64 0c-47.4 0-88.9 25.8-111 64.2c35.2 39.2 86.2 63.8 143 63.8s107.8-24.7 143-63.8zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm256 16a72 72 0 1 0 0-144 72 72 0 1 0 0 144z"/>
+</svg>        </button>
+        <div
+          aria-labelledby="tibopUserDropdown"
+          class="dropdown-menu dropdown-menu-right"
+        >
+          	<ul id="nav-desktop-user" class=" pkp_nav_list">
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/user/register">
+					Register
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/login">
+					Login
+				</a>
+							</li>
+										</ul>
+
+                  </div>
+      </div>
+      </div>
+</div>
+
+
+
+			<div class="pkp_head_wrapper">
+
+				<div class="pkp_site_name_wrapper">
+					<button class="pkp_site_nav_toggle">
+						<span>Open Menu</span>
+					</button>
+										<div class="pkp_site_name">
+																<a href="						https://www.tib-op.org/ojs/index.php/ocp/index
+					" class="is_text">Open Conference Proceedings</a>
+										</div>
+				</div>
+
+				
+				<nav class="pkp_site_nav_menu" aria-label="Site Navigation">
+					<a id="siteNav"></a>
+					<div class="pkp_navigation_primary_row">
+						<div class="pkp_navigation_primary_wrapper">
+																				<ul id="navigationPrimary" class="pkp_navigation_primary pkp_nav_list">
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/about">
+					About
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about">
+										About the Proceedings Series
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/submissions">
+										Conference Proceedings  Submissions
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/editorialTeam">
+										Editorial Team
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/privacy">
+										Privacy Statement
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/contact">
+										Contact
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/publicationethics">
+					Publication Ethics
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/current">
+					Current Volume
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/archive">
+					Past Volumes
+				</a>
+							</li>
+										</ul>
+
+				
+
+																						<div class="pkp_navigation_search_wrapper">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/search" class="pkp_search pkp_search_desktop">
+										<span class="fa fa-search" aria-hidden="true"></span>
+										Search
+									</a>
+								</div>
+													</div>
+					</div>
+					<div class="pkp_navigation_user_wrapper" id="navigationUserWrapper">
+							<ul id="navigationUser" class="pkp_navigation_user pkp_nav_list">
+								<li class="profile">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/user/register">
+					Register
+				</a>
+							</li>
+								<li class="profile">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/login">
+					Login
+				</a>
+							</li>
+										</ul>
+<div class="tibop-mobile-dropdown">
+  <a
+    class="tibop-mobile-dropdown-link"
+    href="https://www.tib-op.org/ojs/index.php/index"
+  >
+    <svg width="641" height="247" viewBox="0 0 641 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="90.9998" y="35" width="454" height="25" rx="12.5" fill="#8BBDBF"/>
+  <rect x="407" y="82" width="186" height="25" rx="12.5" fill="#005C5F"/>
+  <rect x="331" y="127" width="310" height="25" rx="12.5" fill="#ABE8DD"/>
+  <path d="M42.3055 60.0743H39.4949C39.0469 60.0803 38.6031 59.9885 38.1954 59.8054C37.7878 59.6223 37.4263 59.3526 37.1371 59.0155C36.5833 58.4162 36.2767 57.6348 36.2774 56.8244V3.17156C36.2876 2.38529 36.596 1.63122 37.1421 1.0576C37.4326 0.72376 37.7937 0.456545 38.2001 0.274698C38.6066 0.09285 39.0485 0.000774126 39.4949 0.00491732H42.3055C42.7701 -0.0104264 43.232 0.0812923 43.6542 0.272772C44.0765 0.464251 44.4476 0.750199 44.7379 1.10785C45.2353 1.68616 45.512 2.41736 45.5205 3.17524V56.8244C45.5202 57.6078 45.2436 58.3667 44.7379 58.9714C44.4469 59.3283 44.0758 59.6138 43.6536 59.8052C43.2315 59.9966 42.77 60.0887 42.3055 60.0743Z" fill="#4A4A4A"/>
+  <path d="M17.9232 60.0743H15.1126C14.6633 60.0813 14.2181 59.9896 13.8092 59.8061C13.4003 59.6225 13.038 59.3516 12.7486 59.0131C12.1976 58.4134 11.8929 57.6332 11.8939 56.8243V9.10901H3.70212C2.9069 9.09696 2.14428 8.7958 1.56086 8.26343C1.21804 7.97769 0.943727 7.62069 0.757644 7.2181C0.571561 6.81551 0.478327 6.37732 0.484638 5.93501V3.16665C0.469256 2.70922 0.56247 2.25457 0.756866 1.83886C0.951261 1.42315 1.24147 1.05787 1.60441 0.772065C2.19252 0.282005 2.93557 0.00901368 3.70585 1.02559e-05H29.1633C29.9623 -0.0019323 30.7367 0.272133 31.3518 0.774514C31.7128 1.06094 32.0011 1.42621 32.194 1.84142C32.3868 2.25662 32.4789 2.71034 32.4628 3.16665V5.93501C32.4697 6.37727 32.3768 6.81552 32.1909 7.21816C32.005 7.62079 31.7307 7.97779 31.3879 8.26343C30.7788 8.80776 29.9857 9.1092 29.1633 9.10901H21.1382V56.8243C21.1381 57.608 20.861 58.3671 20.3544 58.9714C20.0642 59.3289 19.6933 59.6147 19.2713 59.8062C18.8492 59.9977 18.3876 60.0895 17.9232 60.0743Z" fill="#4A4A4A"/>
+  <path d="M67.9056 60.0746H55.9688C55.5198 60.0815 55.0748 59.9901 54.666 59.807C54.2572 59.6239 53.8947 59.3536 53.6048 59.0158C53.0498 58.4168 52.7415 57.6355 52.7401 56.8246V3.17183C52.7253 2.7143 52.8188 2.25966 53.0132 1.84384C53.2075 1.42803 53.4974 1.06245 53.8599 0.776012C54.4489 0.287643 55.1915 0.0152688 55.9613 0.00518709H65.3003C67.3727 -0.0108496 69.4442 0.100886 71.5025 0.339742C73.1784 0.518102 74.8032 1.01547 76.2865 1.80419C78.5311 3.04505 80.2847 4.99596 81.2632 7.34092C82.3134 9.78219 82.8424 12.4102 82.8172 15.0614C82.8172 19.5308 82.3444 22.6937 81.369 24.7329C80.8382 25.8221 80.1201 26.8126 79.2464 27.6606C79.0996 27.7917 78.9416 27.9241 78.7736 28.0552C80.3514 29.0057 81.6071 30.3961 82.3818 32.0503C83.6072 34.9431 84.1795 38.0638 84.0589 41.1961C84.0577 43.3609 83.9152 45.5234 83.6322 47.6703C83.3627 49.8437 82.6405 51.9389 81.5108 53.8246C80.3055 55.7641 78.5804 57.3386 76.5253 58.3749C73.8333 59.6179 70.876 60.201 67.9056 60.0746ZM61.9895 50.9693H67.4527C68.5727 50.9858 69.6898 50.8526 70.7734 50.5734C71.5877 50.3512 72.3199 49.9028 72.8824 49.2818C73.5705 48.4437 74.0491 47.4581 74.2796 46.4044C74.6821 44.6147 74.8626 42.7835 74.8171 40.951C74.864 39.5287 74.6667 38.1088 74.2335 36.7512C73.948 35.8933 73.4138 35.1363 72.697 34.5736C71.8851 34.0084 70.9541 33.6314 69.9734 33.4706C68.5687 33.2285 67.1443 33.1145 65.7183 33.1299H61.9857L61.9895 50.9693ZM61.9895 24.0222H65.8813C67.0301 24.0251 68.178 23.9604 69.319 23.8285C70.15 23.7443 70.9421 23.4394 71.6108 22.9462C72.3287 22.3285 72.8505 21.5201 73.1138 20.6178C73.5954 18.9158 73.8053 17.1505 73.7359 15.385C73.8015 14.1463 73.5953 12.9082 73.1312 11.7551C72.8022 11.0435 72.2723 10.4402 71.6046 10.0174C70.8287 9.58032 69.962 9.323 69.0702 9.26492C67.9043 9.16198 66.6091 9.10928 65.2244 9.10928H61.9895V24.0222Z" fill="#4A4A4A"/>
+  <path d="M613.459 246.666C607.812 246.666 602.537 245.625 597.633 243.545C592.729 241.464 588.419 238.604 584.704 234.963C580.988 231.248 578.053 226.975 575.899 222.145C573.818 217.316 572.778 212.114 572.778 206.541C572.778 200.969 573.818 195.767 575.899 190.938C578.053 186.108 580.988 181.873 584.704 178.232C588.419 174.517 592.729 171.619 597.633 169.538C602.537 167.458 607.812 166.417 613.459 166.417C616.952 166.417 620.332 166.789 623.602 167.532C626.871 168.275 629.88 169.39 632.63 170.876C633.744 171.47 634.562 172.287 635.082 173.328C635.676 174.294 635.973 175.297 635.973 176.337C635.973 178.12 635.379 179.718 634.19 181.13C633.001 182.541 631.478 183.247 629.62 183.247C629.026 183.247 628.394 183.173 627.726 183.024C627.131 182.876 626.537 182.653 625.942 182.356C624.085 181.538 622.116 180.907 620.035 180.461C617.955 180.015 615.763 179.792 613.459 179.792C608.63 179.792 604.208 181.018 600.196 183.47C596.258 185.848 593.1 189.08 590.722 193.167C588.419 197.179 587.267 201.637 587.267 206.541C587.267 211.371 588.419 215.829 590.722 219.916C593.1 224.003 596.258 227.272 600.196 229.724C604.208 232.102 608.63 233.291 613.459 233.291C615.688 233.291 618.14 233.068 620.815 232.622C623.49 232.176 625.682 231.582 627.391 230.839L626.388 234.183V215.124L628.283 216.795H615.911C613.979 216.795 612.345 216.164 611.007 214.901C609.744 213.638 609.113 212.04 609.113 210.108C609.113 208.176 609.744 206.579 611.007 205.315C612.345 204.052 613.979 203.421 615.911 203.421H634.19C636.122 203.421 637.719 204.089 638.983 205.427C640.246 206.69 640.877 208.288 640.877 210.22V233.848C640.877 235.334 640.506 236.56 639.763 237.526C639.094 238.492 638.314 239.272 637.422 239.867C634.004 241.947 630.252 243.619 626.165 244.882C622.153 246.071 617.918 246.666 613.459 246.666Z" fill="#4A4A4A"/>
+  <path d="M553.903 167.532C555.686 167.532 557.135 168.126 558.25 169.315C559.364 170.504 559.921 171.99 559.921 173.773V238.752C559.921 240.684 559.253 242.319 557.915 243.656C556.652 244.919 555.054 245.551 553.123 245.551C552.157 245.551 551.153 245.402 550.113 245.105C549.147 244.734 548.404 244.251 547.884 243.656L504.082 188.04L506.98 186.257V239.309C506.98 241.093 506.385 242.579 505.197 243.768C504.082 244.957 502.596 245.551 500.738 245.551C498.955 245.551 497.506 244.957 496.392 243.768C495.277 242.579 494.72 241.093 494.72 239.309V174.331C494.72 172.399 495.351 170.801 496.614 169.538C497.952 168.201 499.587 167.532 501.519 167.532C502.559 167.532 503.636 167.755 504.751 168.201C505.865 168.572 506.683 169.167 507.203 169.984L549.667 224.151L547.773 225.489V173.773C547.773 171.99 548.33 170.504 549.445 169.315C550.559 168.126 552.045 167.532 553.903 167.532Z" fill="#4A4A4A"/>
+  <path d="M477.958 238.752C477.958 240.684 477.252 242.319 475.84 243.656C474.428 244.919 472.794 245.551 470.936 245.551C468.856 245.551 467.184 244.919 465.921 243.656C464.657 242.319 464.026 240.684 464.026 238.752V174.331C464.026 172.399 464.695 170.801 466.032 169.538C467.37 168.201 469.078 167.532 471.159 167.532C472.942 167.532 474.503 168.201 475.84 169.538C477.252 170.801 477.958 172.399 477.958 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M391.05 167.532C392.833 167.532 394.394 168.201 395.731 169.538C397.143 170.801 397.849 172.399 397.849 174.331V238.752C397.849 240.684 397.143 242.319 395.731 243.656C394.32 244.919 392.685 245.551 390.827 245.551C388.747 245.551 387.075 244.919 385.812 243.656C384.549 242.319 383.917 240.684 383.917 238.752V174.331C383.917 172.399 384.586 170.801 385.923 169.538C387.261 168.201 388.97 167.532 391.05 167.532ZM440.425 167.532C442.506 167.532 444.177 168.201 445.441 169.538C446.704 170.801 447.335 172.399 447.335 174.331V238.752C447.335 240.684 446.667 242.319 445.329 243.656C444.066 244.919 442.357 245.551 440.202 245.551C438.419 245.551 436.821 244.919 435.41 243.656C434.072 242.319 433.403 240.684 433.403 238.752V174.331C433.403 172.399 434.109 170.801 435.521 169.538C436.933 168.201 438.567 167.532 440.425 167.532ZM390.716 199.966H440.425V212.783H390.716V199.966Z" fill="#4A4A4A"/>
+  <path d="M342.491 246.666C337.29 246.666 332.609 246.034 328.448 244.771C324.287 243.433 320.311 241.13 316.522 237.861C315.556 237.043 314.813 236.114 314.293 235.074C313.773 234.034 313.513 232.994 313.513 231.953C313.513 230.244 314.107 228.758 315.296 227.495C316.559 226.158 318.119 225.489 319.977 225.489C321.389 225.489 322.652 225.935 323.767 226.826C326.59 229.13 329.377 230.876 332.126 232.065C334.949 233.254 338.404 233.848 342.491 233.848C345.24 233.848 347.767 233.439 350.07 232.622C352.374 231.73 354.231 230.579 355.643 229.167C357.055 227.681 357.761 226.009 357.761 224.151C357.761 221.922 357.092 220.028 355.754 218.467C354.417 216.907 352.374 215.607 349.624 214.566C346.875 213.452 343.383 212.597 339.147 212.003C335.135 211.408 331.606 210.517 328.559 209.328C325.513 208.065 322.949 206.504 320.869 204.647C318.863 202.715 317.339 200.486 316.299 197.959C315.259 195.359 314.739 192.461 314.739 189.266C314.739 184.436 315.965 180.312 318.417 176.894C320.943 173.476 324.324 170.876 328.559 169.092C332.794 167.309 337.476 166.417 342.603 166.417C347.432 166.417 351.891 167.16 355.977 168.647C360.138 170.058 363.519 171.879 366.12 174.108C368.275 175.817 369.352 177.786 369.352 180.015C369.352 181.65 368.72 183.136 367.457 184.473C366.194 185.811 364.708 186.479 362.999 186.479C361.884 186.479 360.881 186.145 359.99 185.476C358.801 184.436 357.203 183.47 355.197 182.578C353.191 181.613 351.073 180.832 348.844 180.238C346.615 179.569 344.535 179.235 342.603 179.235C339.408 179.235 336.695 179.643 334.466 180.461C332.312 181.278 330.677 182.393 329.562 183.805C328.448 185.216 327.89 186.851 327.89 188.709C327.89 190.938 328.522 192.795 329.785 194.281C331.123 195.693 333.017 196.845 335.469 197.736C337.921 198.554 340.856 199.297 344.274 199.966C348.733 200.783 352.634 201.749 355.977 202.863C359.395 203.978 362.219 205.427 364.448 207.21C366.677 208.919 368.349 211.111 369.463 213.786C370.578 216.387 371.135 219.582 371.135 223.371C371.135 228.201 369.798 232.362 367.123 235.854C364.448 239.347 360.919 242.022 356.535 243.879C352.225 245.737 347.544 246.666 342.491 246.666Z" fill="#4A4A4A"/>
+  <path d="M300.652 238.752C300.652 240.684 299.946 242.319 298.534 243.656C297.122 244.919 295.488 245.551 293.63 245.551C291.549 245.551 289.878 244.919 288.614 243.656C287.351 242.319 286.72 240.684 286.72 238.752V174.331C286.72 172.399 287.388 170.801 288.726 169.538C290.063 168.201 291.772 167.532 293.853 167.532C295.636 167.532 297.197 168.201 298.534 169.538C299.946 170.801 300.652 172.399 300.652 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M267.157 232.511C269.088 232.511 270.686 233.142 271.949 234.405C273.287 235.594 273.955 237.155 273.955 239.087C273.955 240.944 273.287 242.505 271.949 243.768C270.686 244.957 269.088 245.551 267.157 245.551H230.933C229.002 245.551 227.367 244.919 226.029 243.656C224.766 242.319 224.135 240.684 224.135 238.752V174.331C224.135 172.399 224.803 170.801 226.141 169.538C227.478 168.201 229.187 167.532 231.268 167.532C233.051 167.532 234.612 168.201 235.949 169.538C237.361 170.801 238.067 172.399 238.067 174.331V234.405L235.615 232.511H267.157Z" fill="#4A4A4A"/>
+  <path d="M185.986 167.532C193.119 167.532 198.432 169.204 201.924 172.547C205.417 175.891 207.163 180.832 207.163 187.371C207.163 190.863 206.308 193.947 204.599 196.622C202.89 199.223 200.364 201.266 197.02 202.752C193.677 204.164 189.553 204.87 184.649 204.87L185.095 199.854C187.398 199.854 190.036 200.189 193.008 200.857C195.98 201.452 198.841 202.566 201.59 204.201C204.414 205.761 206.717 207.99 208.5 210.888C210.358 213.712 211.287 217.353 211.287 221.811C211.287 226.715 210.469 230.727 208.835 233.848C207.274 236.969 205.194 239.384 202.593 241.093C199.993 242.802 197.206 243.991 194.234 244.659C191.262 245.254 188.401 245.551 185.652 245.551H157.899C155.968 245.551 154.333 244.919 152.995 243.656C151.732 242.319 151.101 240.684 151.101 238.752V174.331C151.101 172.399 151.732 170.801 152.995 169.538C154.333 168.201 155.968 167.532 157.899 167.532H185.986ZM183.98 180.684H164.141L165.59 178.9V199.074L164.252 198.071H184.314C186.469 198.071 188.401 197.365 190.11 195.953C191.819 194.541 192.674 192.498 192.674 189.823C192.674 186.628 191.856 184.325 190.222 182.913C188.661 181.427 186.581 180.684 183.98 180.684ZM184.872 211.223H164.587L165.59 210.331V233.848L164.475 232.734H185.652C189.07 232.734 191.782 231.842 193.788 230.059C195.794 228.201 196.798 225.452 196.798 221.811C196.798 218.467 196.129 216.052 194.791 214.566C193.454 213.08 191.856 212.151 189.999 211.78C188.141 211.408 186.432 211.223 184.872 211.223Z" fill="#4A4A4A"/>
+  <path d="M127.909 167.421C129.841 167.421 131.401 168.089 132.59 169.427C133.779 170.69 134.374 172.287 134.374 174.219V214.566C134.374 220.734 133.036 226.195 130.361 230.95C127.761 235.706 124.157 239.421 119.55 242.096C114.943 244.771 109.593 246.108 103.5 246.108C97.4074 246.108 92.0204 244.771 87.3392 242.096C82.7324 239.421 79.0915 235.706 76.4166 230.95C73.8159 226.195 72.5156 220.734 72.5156 214.566V174.219C72.5156 172.287 73.1844 170.69 74.5218 169.427C75.8593 168.089 77.5683 167.421 79.6488 167.421C81.3578 167.421 82.881 168.089 84.2185 169.427C85.6303 170.69 86.3361 172.287 86.3361 174.219V214.566C86.3361 218.282 87.1163 221.514 88.6767 224.263C90.3114 226.938 92.4291 229.018 95.0297 230.504C97.7046 231.991 100.528 232.734 103.5 232.734C106.695 232.734 109.668 231.991 112.417 230.504C115.166 229.018 117.395 226.938 119.104 224.263C120.813 221.514 121.668 218.282 121.668 214.566V174.219C121.668 172.287 122.225 170.69 123.339 169.427C124.454 168.089 125.977 167.421 127.909 167.421Z" fill="#4A4A4A"/>
+  <path d="M37.5699 167.532C41.4337 167.532 45.0374 168.647 48.3811 170.876C51.7991 173.105 54.5483 176.114 56.6288 179.904C58.7093 183.693 59.7496 187.928 59.7496 192.61C59.7496 197.216 58.7093 201.415 56.6288 205.204C54.5483 208.994 51.7991 212.04 48.3811 214.343C45.0374 216.573 41.4337 217.687 37.5699 217.687H17.062L18.1766 215.681V238.752C18.1766 240.684 17.5821 242.319 16.3933 243.656C15.2044 244.919 13.644 245.551 11.7121 245.551C9.85454 245.551 8.33132 244.919 7.14245 243.656C5.95359 242.319 5.35916 240.684 5.35916 238.752V174.331C5.35916 172.399 5.99074 170.801 7.25391 169.538C8.59138 168.201 10.2261 167.532 12.158 167.532H37.5699ZM37.5699 204.981C38.9817 204.981 40.3563 204.387 41.6937 203.198C43.0312 202.009 44.1458 200.486 45.0374 198.628C45.9291 196.696 46.3749 194.69 46.3749 192.61C46.3749 190.455 45.9291 188.448 45.0374 186.591C44.1458 184.733 43.0312 183.247 41.6937 182.133C40.3563 180.944 38.9817 180.349 37.5699 180.349H16.8391L18.1766 178.343V206.764L16.9506 204.981H37.5699Z" fill="#4A4A4A"/>
+  <path d="M280.052 73.4911C281.836 73.4911 283.285 74.0856 284.399 75.2744C285.514 76.4633 286.071 77.9494 286.071 79.7327V144.711C286.071 146.643 285.402 148.278 284.065 149.615C282.802 150.879 281.204 151.51 279.272 151.51C278.306 151.51 277.303 151.362 276.263 151.064C275.297 150.693 274.554 150.21 274.034 149.615L230.232 93.999L233.129 92.2157V145.269C233.129 147.052 232.535 148.538 231.346 149.727C230.232 150.916 228.746 151.51 226.888 151.51C225.105 151.51 223.656 150.916 222.541 149.727C221.427 148.538 220.869 147.052 220.869 145.269V80.29C220.869 78.3581 221.501 76.7605 222.764 75.4974C224.102 74.1599 225.736 73.4911 227.668 73.4911C228.708 73.4911 229.786 73.7141 230.9 74.1599C232.015 74.5314 232.832 75.1258 233.352 75.9432L275.817 130.111L273.922 131.448V79.7327C273.922 77.9494 274.48 76.4633 275.594 75.2744C276.709 74.0856 278.195 73.4911 280.052 73.4911Z" fill="#4A4A4A"/>
+  <path d="M163.886 73.4911H201.224C203.155 73.4911 204.753 74.1227 206.016 75.3859C207.354 76.5748 208.022 78.1351 208.022 80.067C208.022 81.9246 207.354 83.4479 206.016 84.6367C204.753 85.7513 203.155 86.3086 201.224 86.3086H170.016L171.019 84.4138V106.148L170.127 105.256H196.208C198.14 105.256 199.737 105.888 201.001 107.151C202.338 108.34 203.007 109.9 203.007 111.832C203.007 113.69 202.338 115.213 201.001 116.402C199.737 117.516 198.14 118.073 196.208 118.073H170.462L171.019 117.182V139.696L170.127 138.693H201.224C203.155 138.693 204.753 139.362 206.016 140.699C207.354 141.962 208.022 143.448 208.022 145.157C208.022 147.015 207.354 148.538 206.016 149.727C204.753 150.916 203.155 151.51 201.224 151.51H163.886C161.954 151.51 160.319 150.879 158.982 149.615C157.719 148.278 157.087 146.643 157.087 144.711V80.29C157.087 78.3581 157.719 76.7605 158.982 75.4974C160.319 74.1599 161.954 73.4911 163.886 73.4911Z" fill="#4A4A4A"/>
+  <path d="M122.141 73.4911C126.005 73.4911 129.609 74.6057 132.953 76.8348C136.371 79.0639 139.12 82.0732 141.2 85.8627C143.281 89.6522 144.321 93.8876 144.321 98.5687C144.321 103.176 143.281 107.374 141.2 111.163C139.12 114.953 136.371 117.999 132.953 120.303C129.609 122.532 126.005 123.646 122.141 123.646H101.633L102.748 121.64V144.711C102.748 146.643 102.154 148.278 100.965 149.615C99.7759 150.879 98.2155 151.51 96.2836 151.51C94.426 151.51 92.9028 150.879 91.7139 149.615C90.525 148.278 89.9306 146.643 89.9306 144.711V80.29C89.9306 78.3581 90.5622 76.7605 91.8254 75.4974C93.1628 74.1599 94.7975 73.4911 96.7294 73.4911H122.141ZM122.141 110.94C123.553 110.94 124.928 110.346 126.265 109.157C127.603 107.968 128.717 106.445 129.609 104.587C130.501 102.655 130.946 100.649 130.946 98.5687C130.946 96.4139 130.501 94.4077 129.609 92.5501C128.717 90.6925 127.603 89.2064 126.265 88.0919C124.928 86.903 123.553 86.3086 122.141 86.3086H101.411L102.748 84.3024V112.724L101.522 110.94H122.141Z" fill="#4A4A4A"/>
+  <path d="M77.1367 112.501C77.1367 118.073 76.2079 123.275 74.3503 128.104C72.4927 132.934 69.8549 137.207 66.4369 140.922C63.0933 144.563 59.0809 147.423 54.3997 149.504C49.7929 151.585 44.7402 152.625 39.2417 152.625C33.7432 152.625 28.6906 151.585 24.0837 149.504C19.4769 147.423 15.4645 144.563 12.0465 140.922C8.70285 137.207 6.10221 132.934 4.24462 128.104C2.38702 123.275 1.45822 118.073 1.45822 112.501C1.45822 106.928 2.38702 101.727 4.24462 96.8969C6.10221 92.0671 8.70285 87.8318 12.0465 84.1909C15.4645 80.4757 19.4769 77.5779 24.0837 75.4973C28.6906 73.4168 33.7432 72.3766 39.2417 72.3766C44.7402 72.3766 49.7929 73.4168 54.3997 75.4973C59.0809 77.5779 63.0933 80.4757 66.4369 84.1909C69.8549 87.8318 72.4927 92.0671 74.3503 96.8969C76.2079 101.727 77.1367 106.928 77.1367 112.501ZM62.6474 112.501C62.6474 107.522 61.6443 103.027 59.6381 99.0145C57.6319 94.9278 54.8827 91.6956 51.3904 89.3179C47.8981 86.9401 43.8486 85.7513 39.2417 85.7513C34.6349 85.7513 30.5853 86.9401 27.0931 89.3179C23.6008 91.6956 20.8515 94.8907 18.8453 98.9031C16.9134 102.915 15.9475 107.448 15.9475 112.501C15.9475 117.479 16.9134 122.012 18.8453 126.098C20.8515 130.111 23.6008 133.306 27.0931 135.683C30.5853 138.061 34.6349 139.25 39.2417 139.25C43.8486 139.25 47.8981 138.061 51.3904 135.683C54.8827 133.306 57.6319 130.111 59.6381 126.098C61.6443 122.012 62.6474 117.479 62.6474 112.501Z" fill="#4A4A4A"/>
+</svg>
+  </a>
+  
+</div>
+					</div>
+				</nav>
+			</div><!-- .pkp_head_wrapper -->
+		</header><!-- .pkp_structure_head -->
+
+						<div class="pkp_structure_content has_sidebar">
+			<div class="pkp_structure_main" role="main">
+				<a id="pkp_content_main"></a>
+
+<div class="page page_article">
+			<nav class="cmp_breadcrumbs" role="navigation" aria-label="You are here:">
+	<ol>
+		<li>
+			<a href="https://www.tib-op.org/ojs/index.php/ocp/index">
+				Home
+			</a>
+			<span class="separator">/</span>
+		</li>
+		<li>
+			<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/archive">
+				Archives
+			</a>
+			<span class="separator">/</span>
+		</li>
+					<li>
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/view/169">
+					Vol. 4 (2024): LLMs4OL 2024: The 1st Large Language Models for Ontology Learning Challenge at the 23rd ISWC
+				</a>
+				<span class="separator">/</span>
+			</li>
+				<li class="current" aria-current="page">
+			<span aria-current="page">
+									LLMs4OL 2024 Task Overview
+							</span>
+		</li>
+	</ol>
+</nav>
+	
+		  	 <article class="obj_article_details">
+
+		
+	<h1 class="page_title">
+		LLMs4OL 2024 Datasets: Toward Ontology Learning with Large Language Models
+	</h1>
+
+	
+	<div class="row">
+		<div class="main_entry">
+
+							<section class="item authors">
+					<h2 class="pkp_screen_reader">Authors</h2>
+					<ul class="authors">
+											<li>
+							<span class="name">
+								Hamed Babaei Giglou
+							</span>
+															<span class="affiliation">
+									Technische Informationsbibliothek (TIB) 
+																			<a href="https://ror.org/04aj4c181"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:i="&amp;ns_ai;"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 23.4225 16.696501"
+   xml:space="preserve"
+   sodipodi:docname="rorId.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="23.422501"
+   height="16.696501"><metadata
+   id="metadata93"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs91" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1880"
+   inkscape:window-height="1016"
+   id="namedview89"
+   showgrid="true"
+   showguides="false"
+   inkscape:zoom="1"
+   inkscape:cx="-177.76975"
+   inkscape:cy="13.962506"
+   inkscape:window-x="40"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<switch
+   id="switch86"
+   transform="matrix(0.15,0,0,0.15,-0.7305,-0.624)">
+	<foreignObject
+   requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
+   x="0"
+   y="0"
+   width="1"
+   height="1">
+
+	</foreignObject>
+	<g
+   i:extraneous="self"
+   id="g84">
+		<polygon
+   class="strorId0"
+   points="68.65,4.16 56.52,22.74 44.38,4.16 "
+   id="polygon72"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="119.41,4.16 107.28,22.74 95.14,4.16 "
+   id="polygon74"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="44.38,115.47 56.52,96.88 68.65,115.47 "
+   id="polygon76"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="95.14,115.47 107.28,96.88 119.41,115.47 "
+   id="polygon78"
+   style="fill:#53baa1" />
+		<g
+   id="g82">
+			<path
+   class="st1"
+   d="m 145.53,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 2.24,-3.01 3.35,-6.67 3.35,-10.96 0,-3.56 -0.62,-6.52 -1.85,-8.9 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 h -23.56 v 18.83 c -0.19,-0.55 -0.39,-1.09 -0.61,-1.63 -1.63,-3.95 -3.91,-7.32 -6.84,-10.1 -2.93,-2.78 -6.39,-4.92 -10.41,-6.41 -4.01,-1.49 -8.4,-2.24 -13.16,-2.24 -4.76,0 -9.14,0.75 -13.16,2.24 -4.01,1.49 -7.48,3.63 -10.41,6.41 -2.62,2.49 -4.72,5.46 -6.3,8.9 -0.23,-2.47 -0.81,-4.61 -1.74,-6.41 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 H 4.87 V 89.42 H 18.28 V 65.08 H 24.9 L 37.63,89.42 H 53.71 L 38.24,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 0.1,-0.14 0.19,-0.29 0.29,-0.43 -0.02,0.47 -0.03,0.94 -0.03,1.42 0,4.87 0.82,9.29 2.45,13.24 1.63,3.95 3.91,7.32 6.84,10.1 2.92,2.78 6.39,4.92 10.41,6.41 4.01,1.49 8.4,2.24 13.16,2.24 4.76,0 9.14,-0.75 13.16,-2.24 4.01,-1.49 7.48,-3.63 10.41,-6.41 2.92,-2.78 5.2,-6.15 6.84,-10.1 0.22,-0.53 0.42,-1.08 0.61,-1.63 v 18.83 h 13.41 V 65.08 h 6.62 l 12.73,24.34 h 16.08 z M 36.39,50.81 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 H 18.29 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z m 62.35,16.04 c -0.89,2.38 -2.16,4.44 -3.83,6.19 -1.66,1.75 -3.65,3.11 -5.98,4.09 -2.32,0.98 -4.92,1.46 -7.78,1.46 -2.87,0 -5.46,-0.49 -7.78,-1.46 -2.32,-0.97 -4.31,-2.34 -5.98,-4.09 -1.66,-1.75 -2.94,-3.81 -3.83,-6.19 -0.89,-2.38 -1.33,-5 -1.33,-7.87 0,-2.81 0.44,-5.42 1.33,-7.83 0.89,-2.41 2.16,-4.48 3.83,-6.23 1.66,-1.75 3.65,-3.11 5.98,-4.09 2.32,-0.97 4.91,-1.46 7.78,-1.46 2.87,0 5.46,0.49 7.78,1.46 2.32,0.97 4.31,2.34 5.98,4.09 1.66,1.75 2.94,3.83 3.83,6.23 0.89,2.41 1.33,5.02 1.33,7.83 0,2.87 -0.44,5.49 -1.33,7.87 z m 44.94,-16.04 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 h -7.91 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z"
+   id="path80"
+   inkscape:connector-curvature="0"
+   style="fill:#202826" />
+		</g>
+	</g>
+</switch>
+</svg>
+</a>
+																	</span>
+																						<span class="orcid">
+																			<svg class="orcid_icon" viewBox="0 0 256 256" aria-hidden="true">
+	<style type="text/css">
+		.st0{fill:#A6CE39;}
+		.st1{fill:#FFFFFF;}
+	</style>
+	<path class="st0" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/>
+	<g>
+		<path class="st1" d="M86.3,186.2H70.9V79.1h15.4v48.4V186.2z"/>
+		<path class="st1" d="M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5
+			c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z"/>
+		<path class="st1" d="M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1
+			C84.2,46.7,88.7,51.3,88.7,56.8z"/>
+	</g>
+</svg>
+																		<a href="https://orcid.org/0000-0003-3758-1454" target="_blank">
+										https://orcid.org/0000-0003-3758-1454
+									</a>
+								</span>
+													</li>
+											<li>
+							<span class="name">
+								Jennifer D’Souza
+							</span>
+															<span class="affiliation">
+									Technische Informationsbibliothek (TIB) 
+																			<a href="https://ror.org/04aj4c181"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:i="&amp;ns_ai;"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 23.4225 16.696501"
+   xml:space="preserve"
+   sodipodi:docname="rorId.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="23.422501"
+   height="16.696501"><metadata
+   id="metadata93"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs91" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1880"
+   inkscape:window-height="1016"
+   id="namedview89"
+   showgrid="true"
+   showguides="false"
+   inkscape:zoom="1"
+   inkscape:cx="-177.76975"
+   inkscape:cy="13.962506"
+   inkscape:window-x="40"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<switch
+   id="switch86"
+   transform="matrix(0.15,0,0,0.15,-0.7305,-0.624)">
+	<foreignObject
+   requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
+   x="0"
+   y="0"
+   width="1"
+   height="1">
+
+	</foreignObject>
+	<g
+   i:extraneous="self"
+   id="g84">
+		<polygon
+   class="strorId0"
+   points="68.65,4.16 56.52,22.74 44.38,4.16 "
+   id="polygon72"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="119.41,4.16 107.28,22.74 95.14,4.16 "
+   id="polygon74"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="44.38,115.47 56.52,96.88 68.65,115.47 "
+   id="polygon76"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="95.14,115.47 107.28,96.88 119.41,115.47 "
+   id="polygon78"
+   style="fill:#53baa1" />
+		<g
+   id="g82">
+			<path
+   class="st1"
+   d="m 145.53,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 2.24,-3.01 3.35,-6.67 3.35,-10.96 0,-3.56 -0.62,-6.52 -1.85,-8.9 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 h -23.56 v 18.83 c -0.19,-0.55 -0.39,-1.09 -0.61,-1.63 -1.63,-3.95 -3.91,-7.32 -6.84,-10.1 -2.93,-2.78 -6.39,-4.92 -10.41,-6.41 -4.01,-1.49 -8.4,-2.24 -13.16,-2.24 -4.76,0 -9.14,0.75 -13.16,2.24 -4.01,1.49 -7.48,3.63 -10.41,6.41 -2.62,2.49 -4.72,5.46 -6.3,8.9 -0.23,-2.47 -0.81,-4.61 -1.74,-6.41 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 H 4.87 V 89.42 H 18.28 V 65.08 H 24.9 L 37.63,89.42 H 53.71 L 38.24,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 0.1,-0.14 0.19,-0.29 0.29,-0.43 -0.02,0.47 -0.03,0.94 -0.03,1.42 0,4.87 0.82,9.29 2.45,13.24 1.63,3.95 3.91,7.32 6.84,10.1 2.92,2.78 6.39,4.92 10.41,6.41 4.01,1.49 8.4,2.24 13.16,2.24 4.76,0 9.14,-0.75 13.16,-2.24 4.01,-1.49 7.48,-3.63 10.41,-6.41 2.92,-2.78 5.2,-6.15 6.84,-10.1 0.22,-0.53 0.42,-1.08 0.61,-1.63 v 18.83 h 13.41 V 65.08 h 6.62 l 12.73,24.34 h 16.08 z M 36.39,50.81 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 H 18.29 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z m 62.35,16.04 c -0.89,2.38 -2.16,4.44 -3.83,6.19 -1.66,1.75 -3.65,3.11 -5.98,4.09 -2.32,0.98 -4.92,1.46 -7.78,1.46 -2.87,0 -5.46,-0.49 -7.78,-1.46 -2.32,-0.97 -4.31,-2.34 -5.98,-4.09 -1.66,-1.75 -2.94,-3.81 -3.83,-6.19 -0.89,-2.38 -1.33,-5 -1.33,-7.87 0,-2.81 0.44,-5.42 1.33,-7.83 0.89,-2.41 2.16,-4.48 3.83,-6.23 1.66,-1.75 3.65,-3.11 5.98,-4.09 2.32,-0.97 4.91,-1.46 7.78,-1.46 2.87,0 5.46,0.49 7.78,1.46 2.32,0.97 4.31,2.34 5.98,4.09 1.66,1.75 2.94,3.83 3.83,6.23 0.89,2.41 1.33,5.02 1.33,7.83 0,2.87 -0.44,5.49 -1.33,7.87 z m 44.94,-16.04 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 h -7.91 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z"
+   id="path80"
+   inkscape:connector-curvature="0"
+   style="fill:#202826" />
+		</g>
+	</g>
+</switch>
+</svg>
+</a>
+																	</span>
+																						<span class="orcid">
+																			<svg class="orcid_icon" viewBox="0 0 256 256" aria-hidden="true">
+	<style type="text/css">
+		.st0{fill:#A6CE39;}
+		.st1{fill:#FFFFFF;}
+	</style>
+	<path class="st0" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/>
+	<g>
+		<path class="st1" d="M86.3,186.2H70.9V79.1h15.4v48.4V186.2z"/>
+		<path class="st1" d="M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5
+			c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z"/>
+		<path class="st1" d="M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1
+			C84.2,46.7,88.7,51.3,88.7,56.8z"/>
+	</g>
+</svg>
+																		<a href="https://orcid.org/0000-0002-6616-9509" target="_blank">
+										https://orcid.org/0000-0002-6616-9509
+									</a>
+								</span>
+													</li>
+											<li>
+							<span class="name">
+								Sameer Sadruddin
+							</span>
+															<span class="affiliation">
+									Technische Informationsbibliothek (TIB) 
+																			<a href="https://ror.org/04aj4c181"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:i="&amp;ns_ai;"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 23.4225 16.696501"
+   xml:space="preserve"
+   sodipodi:docname="rorId.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="23.422501"
+   height="16.696501"><metadata
+   id="metadata93"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs91" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1880"
+   inkscape:window-height="1016"
+   id="namedview89"
+   showgrid="true"
+   showguides="false"
+   inkscape:zoom="1"
+   inkscape:cx="-177.76975"
+   inkscape:cy="13.962506"
+   inkscape:window-x="40"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<switch
+   id="switch86"
+   transform="matrix(0.15,0,0,0.15,-0.7305,-0.624)">
+	<foreignObject
+   requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
+   x="0"
+   y="0"
+   width="1"
+   height="1">
+
+	</foreignObject>
+	<g
+   i:extraneous="self"
+   id="g84">
+		<polygon
+   class="strorId0"
+   points="68.65,4.16 56.52,22.74 44.38,4.16 "
+   id="polygon72"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="119.41,4.16 107.28,22.74 95.14,4.16 "
+   id="polygon74"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="44.38,115.47 56.52,96.88 68.65,115.47 "
+   id="polygon76"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="95.14,115.47 107.28,96.88 119.41,115.47 "
+   id="polygon78"
+   style="fill:#53baa1" />
+		<g
+   id="g82">
+			<path
+   class="st1"
+   d="m 145.53,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 2.24,-3.01 3.35,-6.67 3.35,-10.96 0,-3.56 -0.62,-6.52 -1.85,-8.9 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 h -23.56 v 18.83 c -0.19,-0.55 -0.39,-1.09 -0.61,-1.63 -1.63,-3.95 -3.91,-7.32 -6.84,-10.1 -2.93,-2.78 -6.39,-4.92 -10.41,-6.41 -4.01,-1.49 -8.4,-2.24 -13.16,-2.24 -4.76,0 -9.14,0.75 -13.16,2.24 -4.01,1.49 -7.48,3.63 -10.41,6.41 -2.62,2.49 -4.72,5.46 -6.3,8.9 -0.23,-2.47 -0.81,-4.61 -1.74,-6.41 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 H 4.87 V 89.42 H 18.28 V 65.08 H 24.9 L 37.63,89.42 H 53.71 L 38.24,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 0.1,-0.14 0.19,-0.29 0.29,-0.43 -0.02,0.47 -0.03,0.94 -0.03,1.42 0,4.87 0.82,9.29 2.45,13.24 1.63,3.95 3.91,7.32 6.84,10.1 2.92,2.78 6.39,4.92 10.41,6.41 4.01,1.49 8.4,2.24 13.16,2.24 4.76,0 9.14,-0.75 13.16,-2.24 4.01,-1.49 7.48,-3.63 10.41,-6.41 2.92,-2.78 5.2,-6.15 6.84,-10.1 0.22,-0.53 0.42,-1.08 0.61,-1.63 v 18.83 h 13.41 V 65.08 h 6.62 l 12.73,24.34 h 16.08 z M 36.39,50.81 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 H 18.29 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z m 62.35,16.04 c -0.89,2.38 -2.16,4.44 -3.83,6.19 -1.66,1.75 -3.65,3.11 -5.98,4.09 -2.32,0.98 -4.92,1.46 -7.78,1.46 -2.87,0 -5.46,-0.49 -7.78,-1.46 -2.32,-0.97 -4.31,-2.34 -5.98,-4.09 -1.66,-1.75 -2.94,-3.81 -3.83,-6.19 -0.89,-2.38 -1.33,-5 -1.33,-7.87 0,-2.81 0.44,-5.42 1.33,-7.83 0.89,-2.41 2.16,-4.48 3.83,-6.23 1.66,-1.75 3.65,-3.11 5.98,-4.09 2.32,-0.97 4.91,-1.46 7.78,-1.46 2.87,0 5.46,0.49 7.78,1.46 2.32,0.97 4.31,2.34 5.98,4.09 1.66,1.75 2.94,3.83 3.83,6.23 0.89,2.41 1.33,5.02 1.33,7.83 0,2.87 -0.44,5.49 -1.33,7.87 z m 44.94,-16.04 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 h -7.91 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z"
+   id="path80"
+   inkscape:connector-curvature="0"
+   style="fill:#202826" />
+		</g>
+	</g>
+</switch>
+</svg>
+</a>
+																	</span>
+																						<span class="orcid">
+																			<svg class="orcid_icon" viewBox="0 0 256 256" aria-hidden="true">
+	<style type="text/css">
+		.st0{fill:#A6CE39;}
+		.st1{fill:#FFFFFF;}
+	</style>
+	<path class="st0" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/>
+	<g>
+		<path class="st1" d="M86.3,186.2H70.9V79.1h15.4v48.4V186.2z"/>
+		<path class="st1" d="M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5
+			c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z"/>
+		<path class="st1" d="M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1
+			C84.2,46.7,88.7,51.3,88.7,56.8z"/>
+	</g>
+</svg>
+																		<a href="https://orcid.org/0009-0006-7990-9955" target="_blank">
+										https://orcid.org/0009-0006-7990-9955
+									</a>
+								</span>
+													</li>
+											<li>
+							<span class="name">
+								Sören Auer
+							</span>
+															<span class="affiliation">
+									Technische Informationsbibliothek (TIB) 
+																			<a href="https://ror.org/04aj4c181"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+
+<svg
+   xmlns:i="&amp;ns_ai;"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Layer_1"
+   x="0px"
+   y="0px"
+   viewBox="0 0 23.4225 16.696501"
+   xml:space="preserve"
+   sodipodi:docname="rorId.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   width="23.422501"
+   height="16.696501"><metadata
+   id="metadata93"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /></cc:Work></rdf:RDF></metadata><defs
+   id="defs91" /><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1880"
+   inkscape:window-height="1016"
+   id="namedview89"
+   showgrid="true"
+   showguides="false"
+   inkscape:zoom="1"
+   inkscape:cx="-177.76975"
+   inkscape:cy="13.962506"
+   inkscape:window-x="40"
+   inkscape:window-y="27"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
+<switch
+   id="switch86"
+   transform="matrix(0.15,0,0,0.15,-0.7305,-0.624)">
+	<foreignObject
+   requiredExtensions="http://ns.adobe.com/AdobeIllustrator/10.0/"
+   x="0"
+   y="0"
+   width="1"
+   height="1">
+
+	</foreignObject>
+	<g
+   i:extraneous="self"
+   id="g84">
+		<polygon
+   class="strorId0"
+   points="68.65,4.16 56.52,22.74 44.38,4.16 "
+   id="polygon72"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="119.41,4.16 107.28,22.74 95.14,4.16 "
+   id="polygon74"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="44.38,115.47 56.52,96.88 68.65,115.47 "
+   id="polygon76"
+   style="fill:#53baa1" />
+		<polygon
+   class="strorId0"
+   points="95.14,115.47 107.28,96.88 119.41,115.47 "
+   id="polygon78"
+   style="fill:#53baa1" />
+		<g
+   id="g82">
+			<path
+   class="st1"
+   d="m 145.53,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 2.24,-3.01 3.35,-6.67 3.35,-10.96 0,-3.56 -0.62,-6.52 -1.85,-8.9 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 h -23.56 v 18.83 c -0.19,-0.55 -0.39,-1.09 -0.61,-1.63 -1.63,-3.95 -3.91,-7.32 -6.84,-10.1 -2.93,-2.78 -6.39,-4.92 -10.41,-6.41 -4.01,-1.49 -8.4,-2.24 -13.16,-2.24 -4.76,0 -9.14,0.75 -13.16,2.24 -4.01,1.49 -7.48,3.63 -10.41,6.41 -2.62,2.49 -4.72,5.46 -6.3,8.9 -0.23,-2.47 -0.81,-4.61 -1.74,-6.41 -1.23,-2.38 -2.9,-4.27 -4.99,-5.68 -2.09,-1.4 -4.53,-2.41 -7.31,-3.01 -2.78,-0.6 -5.72,-0.9 -8.81,-0.9 H 4.87 V 89.42 H 18.28 V 65.08 H 24.9 L 37.63,89.42 H 53.71 L 38.24,63.71 c 4.3,-0.8 7.57,-2.71 9.8,-5.72 0.1,-0.14 0.19,-0.29 0.29,-0.43 -0.02,0.47 -0.03,0.94 -0.03,1.42 0,4.87 0.82,9.29 2.45,13.24 1.63,3.95 3.91,7.32 6.84,10.1 2.92,2.78 6.39,4.92 10.41,6.41 4.01,1.49 8.4,2.24 13.16,2.24 4.76,0 9.14,-0.75 13.16,-2.24 4.01,-1.49 7.48,-3.63 10.41,-6.41 2.92,-2.78 5.2,-6.15 6.84,-10.1 0.22,-0.53 0.42,-1.08 0.61,-1.63 v 18.83 h 13.41 V 65.08 h 6.62 l 12.73,24.34 h 16.08 z M 36.39,50.81 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 H 18.29 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z m 62.35,16.04 c -0.89,2.38 -2.16,4.44 -3.83,6.19 -1.66,1.75 -3.65,3.11 -5.98,4.09 -2.32,0.98 -4.92,1.46 -7.78,1.46 -2.87,0 -5.46,-0.49 -7.78,-1.46 -2.32,-0.97 -4.31,-2.34 -5.98,-4.09 -1.66,-1.75 -2.94,-3.81 -3.83,-6.19 -0.89,-2.38 -1.33,-5 -1.33,-7.87 0,-2.81 0.44,-5.42 1.33,-7.83 0.89,-2.41 2.16,-4.48 3.83,-6.23 1.66,-1.75 3.65,-3.11 5.98,-4.09 2.32,-0.97 4.91,-1.46 7.78,-1.46 2.87,0 5.46,0.49 7.78,1.46 2.32,0.97 4.31,2.34 5.98,4.09 1.66,1.75 2.94,3.83 3.83,6.23 0.89,2.41 1.33,5.02 1.33,7.83 0,2.87 -0.44,5.49 -1.33,7.87 z m 44.94,-16.04 c -0.72,0.92 -1.62,1.59 -2.71,2.02 -1.09,0.43 -2.31,0.69 -3.65,0.77 -1.35,0.09 -2.62,0.13 -3.83,0.13 h -7.91 V 39.89 h 8.77 c 1.2,0 2.44,0.09 3.7,0.26 1.26,0.17 2.38,0.5 3.35,0.99 0.97,0.49 1.78,1.19 2.41,2.11 0.63,0.92 0.95,2.15 0.95,3.7 0,1.65 -0.36,2.94 -1.08,3.86 z"
+   id="path80"
+   inkscape:connector-curvature="0"
+   style="fill:#202826" />
+		</g>
+	</g>
+</switch>
+</svg>
+</a>
+																	</span>
+																						<span class="orcid">
+																			<svg class="orcid_icon" viewBox="0 0 256 256" aria-hidden="true">
+	<style type="text/css">
+		.st0{fill:#A6CE39;}
+		.st1{fill:#FFFFFF;}
+	</style>
+	<path class="st0" d="M256,128c0,70.7-57.3,128-128,128C57.3,256,0,198.7,0,128C0,57.3,57.3,0,128,0C198.7,0,256,57.3,256,128z"/>
+	<g>
+		<path class="st1" d="M86.3,186.2H70.9V79.1h15.4v48.4V186.2z"/>
+		<path class="st1" d="M108.9,79.1h41.6c39.6,0,57,28.3,57,53.6c0,27.5-21.5,53.6-56.8,53.6h-41.8V79.1z M124.3,172.4h24.5
+			c34.9,0,42.9-26.5,42.9-39.7c0-21.5-13.7-39.7-43.7-39.7h-23.7V172.4z"/>
+		<path class="st1" d="M88.7,56.8c0,5.5-4.5,10.1-10.1,10.1c-5.6,0-10.1-4.6-10.1-10.1c0-5.6,4.5-10.1,10.1-10.1
+			C84.2,46.7,88.7,51.3,88.7,56.8z"/>
+	</g>
+</svg>
+																		<a href="https://orcid.org/0000-0002-0698-2864" target="_blank">
+										https://orcid.org/0000-0002-0698-2864
+									</a>
+								</span>
+													</li>
+										</ul>
+				</section>
+			
+																												<section class="item doi">
+						<h2 class="label">
+														DOI:
+						</h2>
+						<span class="value">
+							<a href="https://doi.org/10.52825/ocp.v4i.2480">
+								https://doi.org/10.52825/ocp.v4i.2480
+							</a>
+						</span>
+					</section>
+							
+									<section class="item keywords">
+				<h2 class="label">
+										Keywords:
+				</h2>
+				<span class="value">
+											Ontology Learning, 											Large Language Models, 											Dataset, 											LLMs4OL Challenge									</span>
+			</section>
+			
+										<section class="item abstract">
+					<h2 class="label">Abstract</h2>
+					<p>Ontology learning (OL) from unstructured data has evolved significantly, with recent advancements integrating large language models (LLMs) to enhance various aspects of the process. The paper introduces the LLMs4OL 2024 datasets, developed to benchmark and advance research in OL using LLMs. The LLMs4OL 2024 dataset as a key component of the LLMs4OL Challenge, targets three primary OL tasks: Term Typing, Taxonomy Discovery, and Non-Taxonomic Relation Extraction. It encompasses seven domains, i.e. lexosemantics and biological functions, offering a comprehensive resource for evaluating LLM-based OL approaches Each task within the dataset is carefully crafted to facilitate both Few-Shot (FS) and Zero-Shot (ZS) evaluation scenarios, allowing for robust assessment of model performance across different knowledge domains to address a critical gap in the field by offering standardized benchmarks for fair comparison for evaluating LLM applications in OL.</p>
+				</section>
+			
+			<div class="item downloads_chart">
+	<h3 class="label">
+		Downloads
+	</h3>
+	<div class="value">
+		<canvas class="usageStatsGraph" data-object-type="Submission" data-object-id="2480"></canvas>
+		<div class="usageStatsUnavailable" data-object-type="Submission" data-object-id="2480">
+			Download data is not yet available.
+		</div>
+	</div>
+</div>
+
+
+																																								
+										<section class="item references">
+					<h2 class="label">
+						References
+					</h2>
+					<div class="value">
+																					<p>[1] A. Maedche and S. Staab, “Ontology learning,” in Handbook on Ontologies, S. Staab and R. Studer, Eds. Berlin, Heidelberg: Springer Berlin Heidelberg, 2004, pp. 173–190, ISBN : 978-3-540-24750-0. DOI : 10 . 1007 / 978 - 3 - 540 - 24750 - 0 _ 9. [Online]. Available: <a href="https://doi.org/10.1007/978-3-540-24750-0_9">https://doi.org/10.1007/978-3-540-24750-0_9</a>. </p>
+															<p>[2] A. Konys, “Knowledge repository of ontology learning tools from text,” Procedia Computer Science, vol. 159, pp. 1614–1628, 2019. </p>
+															<p>[3] Y. Ding and S. Foo, “Ontology research and development. part 2-a review of ontology mapping and evolving,” Journal of information science, vol. 28, no. 5, pp. 375–388, 2002. </p>
+															<p>[4] M. Shamsfard and A. Abdollahzadeh Barforoush, “The state of the art in ontology learning: A framework for comparison,” Knowl. Eng. Rev., vol. 18, no. 4, pp. 293–316, Dec. 2003, ISSN : 0269-8889. DOI : 10.1017/S0269888903000687. [Online]. Available: <a href="https://doi.org/10.1017/S0269888903000687">https://doi.org/10.1017/S0269888903000687</a>. </p>
+															<p>[5] P. Buitelaar, P. Cimiano, and B. Magnini, Ontology learning from text: methods, evaluation and applications. IOS press, 2005, vol. 123. </p>
+															<p>[6] M. Hazman, S. R. El-Beltagy, and A. Rafea, “A survey of ontology learning approaches,” International Journal of Computer Applications, vol. 22, no. 9, pp. 36–43, 2011. </p>
+															<p>[7] M. N. Asim, M. Wasim, M. U. G. Khan, W. Mahmood, and H. M. Abbasi, “A survey of ontology learning techniques and applications,” Database, vol. 2018, bay101, Oct. 2018, ISSN: 1758-0463. DOI: 10.1093/database/bay101. eprint: <a href="https://academic.oup.com/database/article-pdf/doi/10.1093/database/bay101/27329264/bay101.pdf">https://academic.oup.com/database/article-pdf/doi/10.1093/database/bay101/27329264/bay101.pdf</a>. [Online]. Available: <a href="https://doi.org/10.1093/database/bay101">https://doi.org/10.1093/database/bay101</a>. </p>
+															<p>[8] H. Babaei Giglou, J. D’Souza, and S. Auer, “Llms4ol: Large language models for ontology learning,” in The Semantic Web – ISWC 2023, T. R. Payne, V. Presutti, G. Qi, et al., Eds., Cham: Springer Nature Switzerland, 2023, pp. 408–427, ISBN: 978-3-031-47240-4. </p>
+															<p>[9] F. Petroni, T. Rocktäschel, P. Lewis, et al., Language models as knowledge bases?2019. arXiv: 1909.01066 [cs.CL]. [Online]. Available: <a href="https://arxiv.org/abs/1909.01066">https://arxiv.org/abs/1909.01066</a>. </p>
+															<p>[10] B. Zhang, V. A. Carriero, K. Schreiberhuber, et al., “Ontochat: A framework for conversational ontology engineering using language models,” arXiv preprint arXiv:2403.05921, 2024. </p>
+															<p>[11] V. K. Kommineni, B. König-Ries, and S. Samuel, “From human experts to machines: An llm supported approach to ontology and knowledge graph construction,” arXiv preprint arXiv:2403.08345, 2024. </p>
+															<p>[12] M. J. Saeedizade and E. Blomqvist, “Navigating ontology development with large language models,” in European Semantic Web Conference, Springer, 2024, pp. 143–161. </p>
+															<p>[13] R. Du, H. An, K. Wang, and W. Liu, A short review for ontology learning: Stride to large language models trend, 2024. arXiv: 2404.14991 [cs.IR]. [Online]. Available: <a href="https://arxiv.org/abs/2404.14991">https://arxiv.org/abs/2404.14991</a>. </p>
+															<p>[14] H. Khorashadizadeh, F. Z. Amara, M. Ezzabady, et al., Research trends for the inter-play between large language models and knowledge graphs, 2024. arXiv: 2406.08223 [cs.AI]. [Online]. Available: <a href="https://arxiv.org/abs/2406.08223">https://arxiv.org/abs/2406.08223</a>. </p>
+															<p>[15] H. Babaei Giglou, J. D’Souza, and S. Auer, “Llms4ol 2024 overview: The 1st large language models for ontology learning challenge,” Open Conference Proceedings, vol. 4, Oct. 2024. </p>
+															<p>[16] A. Maedche and S. Staab, “Ontology learning for the semantic web,” IEEE Intelligent systems, vol. 16, no. 2, pp. 72–79, 2001. </p>
+															<p>[17] G. A. Miller, “Wordnet: A lexical database for english,” Communications of the ACM, vol. 38, no. 11, pp. 39–41, 1995. </p>
+															<p>[18] Geonames geographical database, 2023. [Online]. Available: <a href="http://www.geonames.org/">http://www.geonames.org/</a>. </p>
+															<p>[19] O. Bodenreider, “The Unified Medical Language System (UMLS): integrating biomedical terminology,” Nucleic Acids Research, vol. 32, no. suppl 1, pp. D267–D270, Jan. 2004, ISSN : 0305-1048. DOI : 10.1093/nar/gkh061.eprint: <a href="https://academic.oup.com/nar/article">https://academic.oup.com/nar/article</a> - pdf / 32 / suppl _1 / D267 / 7621558 / gkh061 . pdf. [Online]. Available: <a href="https://doi.org/10.1093/nar/gkh061">https://doi.org/10.1093/nar/gkh061</a>. </p>
+															<p>[20] National Library of Medicine (US), US Edition of SNOMED CT, <a href="http://www.nlm.nih.gov/research/umls/Snomed/us_edition.html">http://www.nlm.nih.gov/research/umls/Snomed/us_edition.html</a>, Bethesda, MD, 2013. </p>
+															<p>[21] National Cancer Institute (US), NCI Enterprise Vocabulary Services (EVS), <a href="https://www.cancer.gov/research/resources/terminology">https://www.cancer.gov/research/resources/terminology</a>, Bethesda, MD, 2015. </p>
+															<p>[22] Medicomp Systems, Inc., MEDCIN, <a href="http://www.medicomp.com/index">http://www.medicomp.com/index</a> _ html. htm, Chantilly, VA, 2004. </p>
+															<p>[23] S. Carbon and C. Mungall, Gene ontology data archive, version 2024-01-17, Zenodo, Jan. 2024. DOI : 10.5281/zenodo.10536401. [Online]. Available: <a href="https://doi.org/10.5281/zenodo.10536401">https://doi.org/10.5281/zenodo.10536401</a>. </p>
+															<p>[24] S. Auer, C. Bizer, G. Kobilarov, J. Lehmann, R. Cyganiak, and Z. Ives, “Dbpedia: A nucleus for a web of open data,” in The Semantic Web, K. Aberer, K.-S. Choi, N. Noy, et al., Eds., Berlin, Heidelberg: Springer Berlin Heidelberg, 2007, pp. 722–735, ISBN : 978-3-540-76298-0. </p>
+															<p>[25] D. M. Dooley, E. J. Griffiths, G. S. Gosal, et al., “FoodOn: a harmonized food ontology to increase global food traceability, quality control and data integration,” NPJ Science of Food, vol. 2, p. 23, Dec. 2018. DOI: 10.1038/s41538- 018- 0032- 6. [Online]. Available: <a href="https://www.nature.com/articles/s41538-018-0032-6">https://www.nature.com/articles/s41538-018-0032-6</a>. </p>
+															<p>[26] P. F. Patel-Schneider, “Analyzing schema.org,” in The Semantic Web – ISWC 2014, P. Mika, T. Tudorache, A. Bernstein, et al., Eds., Cham: Springer International Publishing, 2014, pp. 261–276, ISBN : 978-3-319-11964-9. </p>
+															<p>[27] T. Dettmers, P. Minervini, P. Stenetorp, and S. Riedel, Convolutional 2d knowledge graph embeddings, 2018. arXiv: 1707 . 01476 [cs.LG]. [Online]. Available: <a href="https://arxiv.org/abs/1707.01476">https://arxiv.org/abs/1707.01476</a>. </p>
+															<p>[28] GeoNames, Geonames feature codes, <a href="https://www.geonames.org/export/codes.html">https://www.geonames.org/export/codes.html</a>, 2024. </p>
+																		</div>
+				</section>
+			
+		</div><!-- .main_entry -->
+
+		<div class="entry_details">
+
+										<div class="item cover_image">
+					<div class="sub_item">
+													<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/view/169">
+								<img src="https://www.tib-op.org/ojs/public/journals/3/cover_issue_169_en_US.png" alt="Volume cover with series title - Open Conference Proceediings, volume number - 4 (2024), volume title -  LLMs4OL 2024: The 1st Large Language Models for Ontology Learning Challenge at the 23rd ISWC">
+							</a>
+											</div>
+				</div>
+			
+										<div class="item galleys">
+					<h2 class="pkp_screen_reader">
+						Downloads
+					</h2>
+					<ul class="value galleys_links">
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link pdf" href="https://www.tib-op.org/ojs/index.php/ocp/article/view/2480/2308">
+
+		
+	PDF
+
+	</a>
+							</li>
+													<li>
+								
+	
+							
+
+<a class="obj_galley_link file" href="https://www.tib-op.org/ojs/index.php/ocp/article/view/2480/2309">
+
+		
+	Related data set
+
+	</a>
+							</li>
+											</ul>
+				</div>
+						
+						<div class="item published">
+				<section class="sub_item">
+					<h2 class="label">
+						Published
+					</h2>
+					<div class="value">
+																			<span>2024-10-02</span>
+																	</div>
+				</section>
+							</div>
+			
+										<div class="item citation">
+					<section class="sub_item citation_display">
+						<h2 class="label">
+							How to Cite
+						</h2>
+						<div class="value">
+							<div id="citationOutput" role="region" aria-live="polite">
+								<div class="csl-bib-body">
+  <div class="csl-entry">Babaei Giglou, H., D’Souza, J., Sadruddin, S., &#38; Auer, S. (2024). LLMs4OL 2024 Datasets: Toward Ontology Learning with Large Language Models. <i>Open Conference Proceedings</i>, <i>4</i>, 17–30. https://doi.org/10.52825/ocp.v4i.2480</div>
+</div>
+							</div>
+							<div class="citation_formats">
+								<button class="cmp_button citation_formats_button" aria-controls="cslCitationFormats" aria-expanded="false" data-csl-dropdown="true">
+									More Citation Formats
+								</button>
+								<div id="cslCitationFormats" class="citation_formats_list" aria-hidden="true">
+									<ul class="citation_formats_styles">
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/acm-sig-proceedings?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/acm-sig-proceedings?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													ACM
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/acs-nano?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/acs-nano?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													ACS
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/apa?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/apa?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													APA
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/associacao-brasileira-de-normas-tecnicas?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													ABNT
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/chicago-author-date?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/chicago-author-date?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													Chicago
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/harvard-cite-them-right?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/harvard-cite-them-right?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													Harvard
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/ieee?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/ieee?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													IEEE
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/modern-language-association?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/modern-language-association?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													MLA
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/turabian-fullnote-bibliography?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													Turabian
+												</a>
+											</li>
+																					<li>
+												<a
+													rel="nofollow"
+													aria-controls="citationOutput"
+													href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/vancouver?submissionId=2480&amp;publicationId=2484"
+													data-load-citation
+													data-json-href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/get/vancouver?submissionId=2480&amp;publicationId=2484&amp;return=json"
+												>
+													Vancouver
+												</a>
+											</li>
+																			</ul>
+																			<div class="label">
+											Download Citation
+										</div>
+										<ul class="citation_formats_styles">
+																							<li>
+													<a href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/download/ris?submissionId=2480&amp;publicationId=2484">
+														<span class="fa fa-download"></span>
+														Endnote/Zotero/Mendeley (RIS)
+													</a>
+												</li>
+																							<li>
+													<a href="https://www.tib-op.org/ojs/index.php/ocp/citationstylelanguage/download/bibtex?submissionId=2480&amp;publicationId=2484">
+														<span class="fa fa-download"></span>
+														BibTeX
+													</a>
+												</li>
+																					</ul>
+																	</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			
+										<div class="item issue">
+
+											<section class="sub_item">
+							<h2 class="label">
+								Conference Proceedings Volume
+							</h2>
+							<div class="value">
+								<a class="title" href="https://www.tib-op.org/ojs/index.php/ocp/issue/view/169">
+									Vol. 4 (2024): LLMs4OL 2024: The 1st Large Language Models for Ontology Learning Challenge at the 23rd ISWC
+								</a>
+							</div>
+						</section>
+					
+											<section class="sub_item">
+							<h2 class="label">
+								Section
+							</h2>
+							<div class="value">
+								LLMs4OL 2024 Task Overview
+							</div>
+						</section>
+					
+									</div>
+			
+															
+										<div class="item copyright">
+					<h2 class="label">
+						License
+					</h2>
+																										<p>Copyright (c) 2024 Hamed Babaei Giglou, Jennifer D’Souza, Sameer Sadruddin, Sören Auer</p>
+														<a rel="license" href="https://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" src="//i.creativecommons.org/l/by/4.0/88x31.png" /></a><p>This work is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</p>
+																
+				</div>
+			
+			<div class="item funders">
+	<h2 class="label">Funding data</h2>
+	<div class="value">
+		<ul>
+							<li>
+																	<a href="https://search.crossref.org/search/funders?id=501100001659&from_ui=yes">Deutsche Forschungsgemeinschaft</a>
+										<br />
+					Grant numbers 460234259				</li>
+							<li>
+																	<a href="https://search.crossref.org/search/funders?id=501100002347&from_ui=yes">Bundesministerium für Bildung und Forschung</a>
+										<br />
+					Grant numbers 01lS22070				</li>
+					</ul>
+	</div>
+</div>
+
+
+		</div><!-- .entry_details -->
+	</div><!-- .row -->
+
+</article>
+
+	
+
+</div><!-- .page -->
+
+  </div><!-- pkp_structure_main -->
+</div><!-- pkp_structure_content -->
+
+<a id="pkp_content_footer"></a>
+<footer class="tibop-footer-wrapper">
+
+      <div class="tibop-footer">
+      <div class="tibop-footer-title">
+        Open Conference Proceedings
+      </div>
+      <div class="tibop-footer-columns">
+        <div class="tibop-footer-column tibop-footer-column-about">
+          <div class="tibop-footer-desc">
+                          <p>Open Conference Proceedings are published by <a href="https://www.tib-op.org/">TIB Open Publishing (Technische Informationsbibliothek TIB))</a></p>
+                      </div>
+                      <table class="tibop-footer-metadata">
+              <tbody>
+                                                  <tr>
+                    <th>eISSN</th>
+                    <td>2749-5841</td>
+                  </tr>
+                              </tbody>
+            </table>
+                  </div>
+        <div class="tibop-footer-column">
+          	<ul id="" class=" pkp_nav_list">
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/about">
+					About
+				</a>
+									<ul>
+																					<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about">
+										About the Proceedings Series
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/submissions">
+										Conference Proceedings  Submissions
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/editorialTeam">
+										Editorial Team
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/privacy">
+										Privacy Statement
+									</a>
+								</li>
+																												<li class="">
+									<a href="https://www.tib-op.org/ojs/index.php/ocp/about/contact">
+										Contact
+									</a>
+								</li>
+																		</ul>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/publicationethics">
+					Publication Ethics
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/current">
+					Current Volume
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/issue/archive">
+					Past Volumes
+				</a>
+							</li>
+										</ul>
+
+        </div>
+        <div class="tibop-footer-column">
+          	<ul id="" class=" pkp_nav_list">
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/user/register">
+					Register
+				</a>
+							</li>
+								<li class="">
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/login">
+					Login
+				</a>
+							</li>
+										</ul>
+
+        </div>
+      </div>
+
+      <!-- sidebar -->
+                    <div class="tibop-footer-columns tibop-sidebar" role="complementary" aria-label="Sidebar">
+          <div class="pkp_block block_web_feed">
+	<h2 class="title">Current Conference Proceedings Volume</h2>
+	<div class="content">
+		<ul>
+			<li>
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/atom">
+					<img src="https://www.tib-op.org/ojs/lib/pkp/templates/images/atom.svg" alt="Atom logo">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/rss2">
+					<img src="https://www.tib-op.org/ojs/lib/pkp/templates/images/rss20_logo.svg" alt="RSS2 logo">
+				</a>
+			</li>
+			<li>
+				<a href="https://www.tib-op.org/ojs/index.php/ocp/gateway/plugin/WebFeedGatewayPlugin/rss">
+					<img src="https://www.tib-op.org/ojs/lib/pkp/templates/images/rss10_logo.svg" alt="RSS1 logo">
+				</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="pkp_block block_custom" id="customblock-guide-to-rssatom-feeds">
+	<h2 class="title pkp_screen_reader">Guide to RSS/Atom Feeds</h2>
+	<div class="content">
+		<p><a title="Guide to RSS/Atom Feeds" href="https://www.tib-op.org/ojs/index.php/ocp/atom_rss_guide">Guide to RSS/Atom Feeds</a></p>
+	</div>
+</div>
+
+        </div>
+          </div>
+  
+    <div class="
+    tibop-footer-btm
+      ">
+    <div class="tibop-footer-service">
+      <a
+        class="tibop-footer-service-link"
+        href="https://www.tib-op.org/ojs/index.php/index"
+      >
+        <svg width="641" height="247" viewBox="0 0 641 247" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="90.9998" y="35" width="454" height="25" rx="12.5" fill="#8BBDBF"/>
+  <rect x="407" y="82" width="186" height="25" rx="12.5" fill="#005C5F"/>
+  <rect x="331" y="127" width="310" height="25" rx="12.5" fill="#ABE8DD"/>
+  <path d="M42.3055 60.0743H39.4949C39.0469 60.0803 38.6031 59.9885 38.1954 59.8054C37.7878 59.6223 37.4263 59.3526 37.1371 59.0155C36.5833 58.4162 36.2767 57.6348 36.2774 56.8244V3.17156C36.2876 2.38529 36.596 1.63122 37.1421 1.0576C37.4326 0.72376 37.7937 0.456545 38.2001 0.274698C38.6066 0.09285 39.0485 0.000774126 39.4949 0.00491732H42.3055C42.7701 -0.0104264 43.232 0.0812923 43.6542 0.272772C44.0765 0.464251 44.4476 0.750199 44.7379 1.10785C45.2353 1.68616 45.512 2.41736 45.5205 3.17524V56.8244C45.5202 57.6078 45.2436 58.3667 44.7379 58.9714C44.4469 59.3283 44.0758 59.6138 43.6536 59.8052C43.2315 59.9966 42.77 60.0887 42.3055 60.0743Z" fill="#4A4A4A"/>
+  <path d="M17.9232 60.0743H15.1126C14.6633 60.0813 14.2181 59.9896 13.8092 59.8061C13.4003 59.6225 13.038 59.3516 12.7486 59.0131C12.1976 58.4134 11.8929 57.6332 11.8939 56.8243V9.10901H3.70212C2.9069 9.09696 2.14428 8.7958 1.56086 8.26343C1.21804 7.97769 0.943727 7.62069 0.757644 7.2181C0.571561 6.81551 0.478327 6.37732 0.484638 5.93501V3.16665C0.469256 2.70922 0.56247 2.25457 0.756866 1.83886C0.951261 1.42315 1.24147 1.05787 1.60441 0.772065C2.19252 0.282005 2.93557 0.00901368 3.70585 1.02559e-05H29.1633C29.9623 -0.0019323 30.7367 0.272133 31.3518 0.774514C31.7128 1.06094 32.0011 1.42621 32.194 1.84142C32.3868 2.25662 32.4789 2.71034 32.4628 3.16665V5.93501C32.4697 6.37727 32.3768 6.81552 32.1909 7.21816C32.005 7.62079 31.7307 7.97779 31.3879 8.26343C30.7788 8.80776 29.9857 9.1092 29.1633 9.10901H21.1382V56.8243C21.1381 57.608 20.861 58.3671 20.3544 58.9714C20.0642 59.3289 19.6933 59.6147 19.2713 59.8062C18.8492 59.9977 18.3876 60.0895 17.9232 60.0743Z" fill="#4A4A4A"/>
+  <path d="M67.9056 60.0746H55.9688C55.5198 60.0815 55.0748 59.9901 54.666 59.807C54.2572 59.6239 53.8947 59.3536 53.6048 59.0158C53.0498 58.4168 52.7415 57.6355 52.7401 56.8246V3.17183C52.7253 2.7143 52.8188 2.25966 53.0132 1.84384C53.2075 1.42803 53.4974 1.06245 53.8599 0.776012C54.4489 0.287643 55.1915 0.0152688 55.9613 0.00518709H65.3003C67.3727 -0.0108496 69.4442 0.100886 71.5025 0.339742C73.1784 0.518102 74.8032 1.01547 76.2865 1.80419C78.5311 3.04505 80.2847 4.99596 81.2632 7.34092C82.3134 9.78219 82.8424 12.4102 82.8172 15.0614C82.8172 19.5308 82.3444 22.6937 81.369 24.7329C80.8382 25.8221 80.1201 26.8126 79.2464 27.6606C79.0996 27.7917 78.9416 27.9241 78.7736 28.0552C80.3514 29.0057 81.6071 30.3961 82.3818 32.0503C83.6072 34.9431 84.1795 38.0638 84.0589 41.1961C84.0577 43.3609 83.9152 45.5234 83.6322 47.6703C83.3627 49.8437 82.6405 51.9389 81.5108 53.8246C80.3055 55.7641 78.5804 57.3386 76.5253 58.3749C73.8333 59.6179 70.876 60.201 67.9056 60.0746ZM61.9895 50.9693H67.4527C68.5727 50.9858 69.6898 50.8526 70.7734 50.5734C71.5877 50.3512 72.3199 49.9028 72.8824 49.2818C73.5705 48.4437 74.0491 47.4581 74.2796 46.4044C74.6821 44.6147 74.8626 42.7835 74.8171 40.951C74.864 39.5287 74.6667 38.1088 74.2335 36.7512C73.948 35.8933 73.4138 35.1363 72.697 34.5736C71.8851 34.0084 70.9541 33.6314 69.9734 33.4706C68.5687 33.2285 67.1443 33.1145 65.7183 33.1299H61.9857L61.9895 50.9693ZM61.9895 24.0222H65.8813C67.0301 24.0251 68.178 23.9604 69.319 23.8285C70.15 23.7443 70.9421 23.4394 71.6108 22.9462C72.3287 22.3285 72.8505 21.5201 73.1138 20.6178C73.5954 18.9158 73.8053 17.1505 73.7359 15.385C73.8015 14.1463 73.5953 12.9082 73.1312 11.7551C72.8022 11.0435 72.2723 10.4402 71.6046 10.0174C70.8287 9.58032 69.962 9.323 69.0702 9.26492C67.9043 9.16198 66.6091 9.10928 65.2244 9.10928H61.9895V24.0222Z" fill="#4A4A4A"/>
+  <path d="M613.459 246.666C607.812 246.666 602.537 245.625 597.633 243.545C592.729 241.464 588.419 238.604 584.704 234.963C580.988 231.248 578.053 226.975 575.899 222.145C573.818 217.316 572.778 212.114 572.778 206.541C572.778 200.969 573.818 195.767 575.899 190.938C578.053 186.108 580.988 181.873 584.704 178.232C588.419 174.517 592.729 171.619 597.633 169.538C602.537 167.458 607.812 166.417 613.459 166.417C616.952 166.417 620.332 166.789 623.602 167.532C626.871 168.275 629.88 169.39 632.63 170.876C633.744 171.47 634.562 172.287 635.082 173.328C635.676 174.294 635.973 175.297 635.973 176.337C635.973 178.12 635.379 179.718 634.19 181.13C633.001 182.541 631.478 183.247 629.62 183.247C629.026 183.247 628.394 183.173 627.726 183.024C627.131 182.876 626.537 182.653 625.942 182.356C624.085 181.538 622.116 180.907 620.035 180.461C617.955 180.015 615.763 179.792 613.459 179.792C608.63 179.792 604.208 181.018 600.196 183.47C596.258 185.848 593.1 189.08 590.722 193.167C588.419 197.179 587.267 201.637 587.267 206.541C587.267 211.371 588.419 215.829 590.722 219.916C593.1 224.003 596.258 227.272 600.196 229.724C604.208 232.102 608.63 233.291 613.459 233.291C615.688 233.291 618.14 233.068 620.815 232.622C623.49 232.176 625.682 231.582 627.391 230.839L626.388 234.183V215.124L628.283 216.795H615.911C613.979 216.795 612.345 216.164 611.007 214.901C609.744 213.638 609.113 212.04 609.113 210.108C609.113 208.176 609.744 206.579 611.007 205.315C612.345 204.052 613.979 203.421 615.911 203.421H634.19C636.122 203.421 637.719 204.089 638.983 205.427C640.246 206.69 640.877 208.288 640.877 210.22V233.848C640.877 235.334 640.506 236.56 639.763 237.526C639.094 238.492 638.314 239.272 637.422 239.867C634.004 241.947 630.252 243.619 626.165 244.882C622.153 246.071 617.918 246.666 613.459 246.666Z" fill="#4A4A4A"/>
+  <path d="M553.903 167.532C555.686 167.532 557.135 168.126 558.25 169.315C559.364 170.504 559.921 171.99 559.921 173.773V238.752C559.921 240.684 559.253 242.319 557.915 243.656C556.652 244.919 555.054 245.551 553.123 245.551C552.157 245.551 551.153 245.402 550.113 245.105C549.147 244.734 548.404 244.251 547.884 243.656L504.082 188.04L506.98 186.257V239.309C506.98 241.093 506.385 242.579 505.197 243.768C504.082 244.957 502.596 245.551 500.738 245.551C498.955 245.551 497.506 244.957 496.392 243.768C495.277 242.579 494.72 241.093 494.72 239.309V174.331C494.72 172.399 495.351 170.801 496.614 169.538C497.952 168.201 499.587 167.532 501.519 167.532C502.559 167.532 503.636 167.755 504.751 168.201C505.865 168.572 506.683 169.167 507.203 169.984L549.667 224.151L547.773 225.489V173.773C547.773 171.99 548.33 170.504 549.445 169.315C550.559 168.126 552.045 167.532 553.903 167.532Z" fill="#4A4A4A"/>
+  <path d="M477.958 238.752C477.958 240.684 477.252 242.319 475.84 243.656C474.428 244.919 472.794 245.551 470.936 245.551C468.856 245.551 467.184 244.919 465.921 243.656C464.657 242.319 464.026 240.684 464.026 238.752V174.331C464.026 172.399 464.695 170.801 466.032 169.538C467.37 168.201 469.078 167.532 471.159 167.532C472.942 167.532 474.503 168.201 475.84 169.538C477.252 170.801 477.958 172.399 477.958 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M391.05 167.532C392.833 167.532 394.394 168.201 395.731 169.538C397.143 170.801 397.849 172.399 397.849 174.331V238.752C397.849 240.684 397.143 242.319 395.731 243.656C394.32 244.919 392.685 245.551 390.827 245.551C388.747 245.551 387.075 244.919 385.812 243.656C384.549 242.319 383.917 240.684 383.917 238.752V174.331C383.917 172.399 384.586 170.801 385.923 169.538C387.261 168.201 388.97 167.532 391.05 167.532ZM440.425 167.532C442.506 167.532 444.177 168.201 445.441 169.538C446.704 170.801 447.335 172.399 447.335 174.331V238.752C447.335 240.684 446.667 242.319 445.329 243.656C444.066 244.919 442.357 245.551 440.202 245.551C438.419 245.551 436.821 244.919 435.41 243.656C434.072 242.319 433.403 240.684 433.403 238.752V174.331C433.403 172.399 434.109 170.801 435.521 169.538C436.933 168.201 438.567 167.532 440.425 167.532ZM390.716 199.966H440.425V212.783H390.716V199.966Z" fill="#4A4A4A"/>
+  <path d="M342.491 246.666C337.29 246.666 332.609 246.034 328.448 244.771C324.287 243.433 320.311 241.13 316.522 237.861C315.556 237.043 314.813 236.114 314.293 235.074C313.773 234.034 313.513 232.994 313.513 231.953C313.513 230.244 314.107 228.758 315.296 227.495C316.559 226.158 318.119 225.489 319.977 225.489C321.389 225.489 322.652 225.935 323.767 226.826C326.59 229.13 329.377 230.876 332.126 232.065C334.949 233.254 338.404 233.848 342.491 233.848C345.24 233.848 347.767 233.439 350.07 232.622C352.374 231.73 354.231 230.579 355.643 229.167C357.055 227.681 357.761 226.009 357.761 224.151C357.761 221.922 357.092 220.028 355.754 218.467C354.417 216.907 352.374 215.607 349.624 214.566C346.875 213.452 343.383 212.597 339.147 212.003C335.135 211.408 331.606 210.517 328.559 209.328C325.513 208.065 322.949 206.504 320.869 204.647C318.863 202.715 317.339 200.486 316.299 197.959C315.259 195.359 314.739 192.461 314.739 189.266C314.739 184.436 315.965 180.312 318.417 176.894C320.943 173.476 324.324 170.876 328.559 169.092C332.794 167.309 337.476 166.417 342.603 166.417C347.432 166.417 351.891 167.16 355.977 168.647C360.138 170.058 363.519 171.879 366.12 174.108C368.275 175.817 369.352 177.786 369.352 180.015C369.352 181.65 368.72 183.136 367.457 184.473C366.194 185.811 364.708 186.479 362.999 186.479C361.884 186.479 360.881 186.145 359.99 185.476C358.801 184.436 357.203 183.47 355.197 182.578C353.191 181.613 351.073 180.832 348.844 180.238C346.615 179.569 344.535 179.235 342.603 179.235C339.408 179.235 336.695 179.643 334.466 180.461C332.312 181.278 330.677 182.393 329.562 183.805C328.448 185.216 327.89 186.851 327.89 188.709C327.89 190.938 328.522 192.795 329.785 194.281C331.123 195.693 333.017 196.845 335.469 197.736C337.921 198.554 340.856 199.297 344.274 199.966C348.733 200.783 352.634 201.749 355.977 202.863C359.395 203.978 362.219 205.427 364.448 207.21C366.677 208.919 368.349 211.111 369.463 213.786C370.578 216.387 371.135 219.582 371.135 223.371C371.135 228.201 369.798 232.362 367.123 235.854C364.448 239.347 360.919 242.022 356.535 243.879C352.225 245.737 347.544 246.666 342.491 246.666Z" fill="#4A4A4A"/>
+  <path d="M300.652 238.752C300.652 240.684 299.946 242.319 298.534 243.656C297.122 244.919 295.488 245.551 293.63 245.551C291.549 245.551 289.878 244.919 288.614 243.656C287.351 242.319 286.72 240.684 286.72 238.752V174.331C286.72 172.399 287.388 170.801 288.726 169.538C290.063 168.201 291.772 167.532 293.853 167.532C295.636 167.532 297.197 168.201 298.534 169.538C299.946 170.801 300.652 172.399 300.652 174.331V238.752Z" fill="#4A4A4A"/>
+  <path d="M267.157 232.511C269.088 232.511 270.686 233.142 271.949 234.405C273.287 235.594 273.955 237.155 273.955 239.087C273.955 240.944 273.287 242.505 271.949 243.768C270.686 244.957 269.088 245.551 267.157 245.551H230.933C229.002 245.551 227.367 244.919 226.029 243.656C224.766 242.319 224.135 240.684 224.135 238.752V174.331C224.135 172.399 224.803 170.801 226.141 169.538C227.478 168.201 229.187 167.532 231.268 167.532C233.051 167.532 234.612 168.201 235.949 169.538C237.361 170.801 238.067 172.399 238.067 174.331V234.405L235.615 232.511H267.157Z" fill="#4A4A4A"/>
+  <path d="M185.986 167.532C193.119 167.532 198.432 169.204 201.924 172.547C205.417 175.891 207.163 180.832 207.163 187.371C207.163 190.863 206.308 193.947 204.599 196.622C202.89 199.223 200.364 201.266 197.02 202.752C193.677 204.164 189.553 204.87 184.649 204.87L185.095 199.854C187.398 199.854 190.036 200.189 193.008 200.857C195.98 201.452 198.841 202.566 201.59 204.201C204.414 205.761 206.717 207.99 208.5 210.888C210.358 213.712 211.287 217.353 211.287 221.811C211.287 226.715 210.469 230.727 208.835 233.848C207.274 236.969 205.194 239.384 202.593 241.093C199.993 242.802 197.206 243.991 194.234 244.659C191.262 245.254 188.401 245.551 185.652 245.551H157.899C155.968 245.551 154.333 244.919 152.995 243.656C151.732 242.319 151.101 240.684 151.101 238.752V174.331C151.101 172.399 151.732 170.801 152.995 169.538C154.333 168.201 155.968 167.532 157.899 167.532H185.986ZM183.98 180.684H164.141L165.59 178.9V199.074L164.252 198.071H184.314C186.469 198.071 188.401 197.365 190.11 195.953C191.819 194.541 192.674 192.498 192.674 189.823C192.674 186.628 191.856 184.325 190.222 182.913C188.661 181.427 186.581 180.684 183.98 180.684ZM184.872 211.223H164.587L165.59 210.331V233.848L164.475 232.734H185.652C189.07 232.734 191.782 231.842 193.788 230.059C195.794 228.201 196.798 225.452 196.798 221.811C196.798 218.467 196.129 216.052 194.791 214.566C193.454 213.08 191.856 212.151 189.999 211.78C188.141 211.408 186.432 211.223 184.872 211.223Z" fill="#4A4A4A"/>
+  <path d="M127.909 167.421C129.841 167.421 131.401 168.089 132.59 169.427C133.779 170.69 134.374 172.287 134.374 174.219V214.566C134.374 220.734 133.036 226.195 130.361 230.95C127.761 235.706 124.157 239.421 119.55 242.096C114.943 244.771 109.593 246.108 103.5 246.108C97.4074 246.108 92.0204 244.771 87.3392 242.096C82.7324 239.421 79.0915 235.706 76.4166 230.95C73.8159 226.195 72.5156 220.734 72.5156 214.566V174.219C72.5156 172.287 73.1844 170.69 74.5218 169.427C75.8593 168.089 77.5683 167.421 79.6488 167.421C81.3578 167.421 82.881 168.089 84.2185 169.427C85.6303 170.69 86.3361 172.287 86.3361 174.219V214.566C86.3361 218.282 87.1163 221.514 88.6767 224.263C90.3114 226.938 92.4291 229.018 95.0297 230.504C97.7046 231.991 100.528 232.734 103.5 232.734C106.695 232.734 109.668 231.991 112.417 230.504C115.166 229.018 117.395 226.938 119.104 224.263C120.813 221.514 121.668 218.282 121.668 214.566V174.219C121.668 172.287 122.225 170.69 123.339 169.427C124.454 168.089 125.977 167.421 127.909 167.421Z" fill="#4A4A4A"/>
+  <path d="M37.5699 167.532C41.4337 167.532 45.0374 168.647 48.3811 170.876C51.7991 173.105 54.5483 176.114 56.6288 179.904C58.7093 183.693 59.7496 187.928 59.7496 192.61C59.7496 197.216 58.7093 201.415 56.6288 205.204C54.5483 208.994 51.7991 212.04 48.3811 214.343C45.0374 216.573 41.4337 217.687 37.5699 217.687H17.062L18.1766 215.681V238.752C18.1766 240.684 17.5821 242.319 16.3933 243.656C15.2044 244.919 13.644 245.551 11.7121 245.551C9.85454 245.551 8.33132 244.919 7.14245 243.656C5.95359 242.319 5.35916 240.684 5.35916 238.752V174.331C5.35916 172.399 5.99074 170.801 7.25391 169.538C8.59138 168.201 10.2261 167.532 12.158 167.532H37.5699ZM37.5699 204.981C38.9817 204.981 40.3563 204.387 41.6937 203.198C43.0312 202.009 44.1458 200.486 45.0374 198.628C45.9291 196.696 46.3749 194.69 46.3749 192.61C46.3749 190.455 45.9291 188.448 45.0374 186.591C44.1458 184.733 43.0312 183.247 41.6937 182.133C40.3563 180.944 38.9817 180.349 37.5699 180.349H16.8391L18.1766 178.343V206.764L16.9506 204.981H37.5699Z" fill="#4A4A4A"/>
+  <path d="M280.052 73.4911C281.836 73.4911 283.285 74.0856 284.399 75.2744C285.514 76.4633 286.071 77.9494 286.071 79.7327V144.711C286.071 146.643 285.402 148.278 284.065 149.615C282.802 150.879 281.204 151.51 279.272 151.51C278.306 151.51 277.303 151.362 276.263 151.064C275.297 150.693 274.554 150.21 274.034 149.615L230.232 93.999L233.129 92.2157V145.269C233.129 147.052 232.535 148.538 231.346 149.727C230.232 150.916 228.746 151.51 226.888 151.51C225.105 151.51 223.656 150.916 222.541 149.727C221.427 148.538 220.869 147.052 220.869 145.269V80.29C220.869 78.3581 221.501 76.7605 222.764 75.4974C224.102 74.1599 225.736 73.4911 227.668 73.4911C228.708 73.4911 229.786 73.7141 230.9 74.1599C232.015 74.5314 232.832 75.1258 233.352 75.9432L275.817 130.111L273.922 131.448V79.7327C273.922 77.9494 274.48 76.4633 275.594 75.2744C276.709 74.0856 278.195 73.4911 280.052 73.4911Z" fill="#4A4A4A"/>
+  <path d="M163.886 73.4911H201.224C203.155 73.4911 204.753 74.1227 206.016 75.3859C207.354 76.5748 208.022 78.1351 208.022 80.067C208.022 81.9246 207.354 83.4479 206.016 84.6367C204.753 85.7513 203.155 86.3086 201.224 86.3086H170.016L171.019 84.4138V106.148L170.127 105.256H196.208C198.14 105.256 199.737 105.888 201.001 107.151C202.338 108.34 203.007 109.9 203.007 111.832C203.007 113.69 202.338 115.213 201.001 116.402C199.737 117.516 198.14 118.073 196.208 118.073H170.462L171.019 117.182V139.696L170.127 138.693H201.224C203.155 138.693 204.753 139.362 206.016 140.699C207.354 141.962 208.022 143.448 208.022 145.157C208.022 147.015 207.354 148.538 206.016 149.727C204.753 150.916 203.155 151.51 201.224 151.51H163.886C161.954 151.51 160.319 150.879 158.982 149.615C157.719 148.278 157.087 146.643 157.087 144.711V80.29C157.087 78.3581 157.719 76.7605 158.982 75.4974C160.319 74.1599 161.954 73.4911 163.886 73.4911Z" fill="#4A4A4A"/>
+  <path d="M122.141 73.4911C126.005 73.4911 129.609 74.6057 132.953 76.8348C136.371 79.0639 139.12 82.0732 141.2 85.8627C143.281 89.6522 144.321 93.8876 144.321 98.5687C144.321 103.176 143.281 107.374 141.2 111.163C139.12 114.953 136.371 117.999 132.953 120.303C129.609 122.532 126.005 123.646 122.141 123.646H101.633L102.748 121.64V144.711C102.748 146.643 102.154 148.278 100.965 149.615C99.7759 150.879 98.2155 151.51 96.2836 151.51C94.426 151.51 92.9028 150.879 91.7139 149.615C90.525 148.278 89.9306 146.643 89.9306 144.711V80.29C89.9306 78.3581 90.5622 76.7605 91.8254 75.4974C93.1628 74.1599 94.7975 73.4911 96.7294 73.4911H122.141ZM122.141 110.94C123.553 110.94 124.928 110.346 126.265 109.157C127.603 107.968 128.717 106.445 129.609 104.587C130.501 102.655 130.946 100.649 130.946 98.5687C130.946 96.4139 130.501 94.4077 129.609 92.5501C128.717 90.6925 127.603 89.2064 126.265 88.0919C124.928 86.903 123.553 86.3086 122.141 86.3086H101.411L102.748 84.3024V112.724L101.522 110.94H122.141Z" fill="#4A4A4A"/>
+  <path d="M77.1367 112.501C77.1367 118.073 76.2079 123.275 74.3503 128.104C72.4927 132.934 69.8549 137.207 66.4369 140.922C63.0933 144.563 59.0809 147.423 54.3997 149.504C49.7929 151.585 44.7402 152.625 39.2417 152.625C33.7432 152.625 28.6906 151.585 24.0837 149.504C19.4769 147.423 15.4645 144.563 12.0465 140.922C8.70285 137.207 6.10221 132.934 4.24462 128.104C2.38702 123.275 1.45822 118.073 1.45822 112.501C1.45822 106.928 2.38702 101.727 4.24462 96.8969C6.10221 92.0671 8.70285 87.8318 12.0465 84.1909C15.4645 80.4757 19.4769 77.5779 24.0837 75.4973C28.6906 73.4168 33.7432 72.3766 39.2417 72.3766C44.7402 72.3766 49.7929 73.4168 54.3997 75.4973C59.0809 77.5779 63.0933 80.4757 66.4369 84.1909C69.8549 87.8318 72.4927 92.0671 74.3503 96.8969C76.2079 101.727 77.1367 106.928 77.1367 112.501ZM62.6474 112.501C62.6474 107.522 61.6443 103.027 59.6381 99.0145C57.6319 94.9278 54.8827 91.6956 51.3904 89.3179C47.8981 86.9401 43.8486 85.7513 39.2417 85.7513C34.6349 85.7513 30.5853 86.9401 27.0931 89.3179C23.6008 91.6956 20.8515 94.8907 18.8453 98.9031C16.9134 102.915 15.9475 107.448 15.9475 112.501C15.9475 117.479 16.9134 122.012 18.8453 126.098C20.8515 130.111 23.6008 133.306 27.0931 135.683C30.5853 138.061 34.6349 139.25 39.2417 139.25C43.8486 139.25 47.8981 138.061 51.3904 135.683C54.8827 133.306 57.6319 130.111 59.6381 126.098C61.6443 122.012 62.6474 117.479 62.6474 112.501Z" fill="#4A4A4A"/>
+</svg>
+      </a>
+      	<ul class="tibop-menu-policy">
+								<li>
+				<a href="https://www.tib-op.org/ojs/index.php/index/tibop/terms">
+					Terms of use
+				</a>
+			</li>
+								<li>
+				<a href="https://www.tib-op.org/ojs/index.php/index/tibop/privacystatement">
+					Privacy statement
+				</a>
+			</li>
+								<li>
+				<a href="https://www.tib-op.org/ojs/index.php/index/tibop/imprint">
+					Imprint 
+				</a>
+			</li>
+								<li>
+				<a href="https://www.tib-op.org/ojs/index.php/index/tibop/accessibilitystatement">
+					Accessibility statement
+				</a>
+			</li>
+			</ul>
+
+    </div>
+          <div class="tibop-footer-partners">
+        <h2 class="pkp_screen_reader">
+          Partners
+        </h2>
+        
+      </div>
+      </div>
+</footer>
+
+<!-- end of page -->
+<script src="https://www.tib-op.org/ojs/lib/pkp/lib/vendor/components/jquery/jquery.min.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/lib/pkp/lib/vendor/components/jqueryui/jquery-ui.min.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/plugins/themes/default/js/lib/popper/popper.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/plugins/themes/default/js/lib/bootstrap/util.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/plugins/themes/default/js/lib/bootstrap/dropdown.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/plugins/themes/default/js/main.js?v=3.3.0.21" type="text/javascript"></script><script src="https://www.tib-op.org/ojs/plugins/themes/tibThemeTwo/dist/assets/main-B4G8ACwM.js?v=3.3.0.21" type="module"></script><script src="https://www.tib-op.org/ojs/plugins/generic/citationStyleLanguage/js/articleCitation.js?v=3.3.0.21" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.data = pkpUsageStats.data || {};pkpUsageStats.data.Submission = pkpUsageStats.data.Submission || {};pkpUsageStats.data.Submission[2480] = {"data":{"2024":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":8,"11":3,"12":5},"2025":{"1":1,"2":0,"3":1,"4":3,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":1},"2026":{"1":3,"2":0,"3":0,"4":0,"5":0,"6":0,"7":0,"8":0,"9":0,"10":0,"11":0,"12":0}},"label":"All Downloads","color":"79,181,217","total":25};</script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.0.1/Chart.js?v=3.3.0.21" type="text/javascript"></script><script type="text/javascript">var pkpUsageStats = pkpUsageStats || {};pkpUsageStats.locale = pkpUsageStats.locale || {};pkpUsageStats.locale.months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];pkpUsageStats.config = pkpUsageStats.config || {};pkpUsageStats.config.chartType = "bar";</script><script src="https://www.tib-op.org/ojs/plugins/generic/usageStats/js/UsageStatsFrontendHandler.js?v=3.3.0.21" type="text/javascript"></script>
+
+</body>
+</html>

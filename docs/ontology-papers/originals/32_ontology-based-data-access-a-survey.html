@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+<meta name="citation_title" content="Ontology-Based Data Access: A Survey" />
+<meta name="citation_author" content="Guohui Xiao" />
+<meta name="citation_author" content="Diego Calvanese" />
+<meta name="citation_author" content="Roman Kontchakov" />
+<meta name="citation_author" content="Domenico Lembo" />
+<meta name="citation_author" content="Antonella Poggi" />
+<meta name="citation_author" content="Riccardo Rosati" />
+<meta name="citation_author" content="Michael Zakharyaschev" />
+<meta name="citation_publication_date" content="2018" />
+<meta name="citation_firstpage" content="5511" />
+<meta name="citation_lastpage" content="5519" />
+<meta name="citation_url" content="https://www.ijcai.org/proceedings/2018/0777.pdf" />
+<meta name="description" content="Electronic proceedings of IJCAI 2018" />
+<meta name="viewport" content="width=device-width" />
+<link rel="shortcut icon" href="https://www.ijcai.org/sites/all/themes/creative-responsive-theme/favicon.ico" type="image/vnd.microsoft.icon" />
+<title>Ontology-Based Data Access: A Survey | IJCAI</title>
+<link type="text/css" rel="stylesheet" href="https://www.ijcai.org/sites/default/files/css/css_xE-rWrJf-fncB6ztZfd2huxqgxu4WO-qwma6Xer30m4.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ijcai.org/sites/default/files/css/css_QFvdUZuRxU8BDGITNP9RHPu44UYXSsn02-YoCVOHqRk.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ijcai.org/sites/default/files/css/css_Mkd9wru-XGNEy3NbAaJTRYf_03tRyYJ14rVf0Qq94Ps.css" media="all" />
+<link type="text/css" rel="stylesheet" href="https://www.ijcai.org/sites/default/files/css/css_Qf---RHq4zDSwkHsFHttLlryblQdA3Plj2EYvf8Aa9U.css" media="all" />
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+window.jQuery || document.write("<script src='/sites/all/modules/jquery_update/replace/jquery/1.10/jquery.min.js'>\x3C/script>")
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.ijcai.org/sites/default/files/js/js_38VWQ3jjQx0wRFj7gkntZr077GgJoGn5nv3v05IeLLo.js"></script>
+<script type="text/javascript" src="https://www.ijcai.org/sites/default/files/js/js_f_BpsloZtITWNBq8h8TQNh4SUGlZKD__yTkMLSN2_t8.js"></script>
+<script type="text/javascript" src="https://www.ijcai.org/sites/default/files/js/js_dMpMyJh_mrZIhjrgnhJu3QqdxeWM22GMwwYnLo7Z3Nw.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","https://www.google-analytics.com/analytics.js","ga");ga("create", "UA-73916955-1", {"cookieDomain":"auto"});ga("set", "anonymizeIp", true);ga("send", "pageview");
+//--><!]]>
+</script>
+<script type="text/javascript" src="https://www.ijcai.org/sites/default/files/js/js_DnHHuvTlbIsCmMK4pMmLWq_maVx0f3YysGAmvKurnTc.js"></script>
+<script type="text/javascript">
+<!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"creative_responsive_theme","theme_token":"vOER02puyStA7vQyMSwWYlHgkf8zhZximO8XtcCjqbM","js":{"\/\/ajax.googleapis.com\/ajax\/libs\/jquery\/1.10.2\/jquery.min.js":1,"0":1,"misc\/jquery-extend-3.4.0.js":1,"misc\/jquery-html-prefilter-3.5.0-backport.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"sites\/all\/modules\/spamspan\/spamspan.js":1,"sites\/all\/libraries\/bootstrap\/js\/bootstrap.min.js":1,"sites\/all\/modules\/google_analytics\/googleanalytics.js":1,"1":1,"sites\/all\/themes\/creative-responsive-theme\/js\/custom.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"modules\/comment\/comment.css":1,"modules\/field\/theme\/field.css":1,"sites\/all\/modules\/ijcai_proceedings\/css\/ijcai_proceedings.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/views\/css\/views.css":1,"sites\/all\/modules\/ckeditor\/css\/ckeditor.css":1,"sites\/all\/libraries\/bootstrap\/css\/bootstrap.min.css":1,"sites\/all\/libraries\/bootstrap\/css\/bootstrap-theme.min.css":1,"sites\/all\/modules\/ctools\/css\/ctools.css":1,"sites\/all\/themes\/creative-responsive-theme\/style.css":1,"sites\/all\/themes\/creative-responsive-theme\/media.css":1}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"}});
+//--><!]]>
+</script>
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+<body class="html not-front not-logged-in no-sidebars page-proceedings page-proceedings- page-proceedings-2018 page-proceedings- page-proceedings-777">
+    
+<div id="header_wrapper">
+  <div id="inner_header_wrapper">
+
+    
+    <header id="header" role="banner">
+      <div id="logo"><a href="/" title="Home"><img src="https://www.ijcai.org/sites/all/themes/creative-responsive-theme/logo.png"/></a></div>
+            <h1 id="site-title">
+        <a href="/" title="Home"></a>
+        <div id="site-description"></div>
+      </h1>
+      <div class="clear"></div>
+    </header>
+
+    <div class="menu_wrapper">
+      <nav id="main-menu"  role="navigation">
+        <a class="nav-toggle" href="#">Navigation</a>
+        <div class="menu-navigation-container">
+          <ul class="menu"><li class="first leaf"><a href="/">Home</a></li>
+<li class="expanded"><a href="/future_conferences">Conferences</a><ul class="menu"><li class="first leaf"><a href="/future_conferences">Future Conferences</a></li>
+<li class="last leaf"><a href="/past_conferences">Past Conferences</a></li>
+</ul></li>
+<li class="expanded"><a href="/all_proceedings">Proceedings</a><ul class="menu"><li class="first leaf"><a href="/proceedings/2025" title="">IJCAI 2025 Proceedings</a></li>
+<li class="last leaf"><a href="/all_proceedings" title="">All Proceedings</a></li>
+</ul></li>
+<li class="collapsed"><a href="/awards">Awards</a></li>
+<li class="expanded"><a href="/trustees/current_trustees" title="">Trustees/officers</a><ul class="menu"><li class="first leaf"><a href="/trustees/current_trustees" title="">Current trustees</a></li>
+<li class="leaf"><a href="/trustees/trustees_elect" title="">Trustees Elect</a></li>
+<li class="leaf"><a href="/officers/ijcai_secretariat" title="">IJCAI Secretariat</a></li>
+<li class="leaf"><a href="/officers/sponsorship_publicity" title="">IJCAI Sponsorship and Publicity Officers</a></li>
+<li class="leaf"><a href="/officers/ijcai_team" title="">IJCAI Team</a></li>
+<li class="leaf"><a href="/officers/local_arrangements_chairs" title="">Local Arrangements Chairs</a></li>
+<li class="leaf"><a href="/trustees/former_trustees_serving_on_the_executive_committee" title="">Former Trustees serving on the Executive Committee</a></li>
+<li class="last leaf"><a href="/officers/other_former_officers" title="">Other Former Officers</a></li>
+</ul></li>
+<li class="leaf"><a href="/aijd">AI Journal</a></li>
+<li class="last expanded"><a href="/aboutIJCAI">About</a><ul class="menu"><li class="first leaf"><a href="/aboutIJCAI" title="">About IJCAI</a></li>
+<li class="last leaf"><a href="/contact">Contact Information</a></li>
+</ul></li>
+</ul>        </div>
+        <div class="clear"></div>
+      </nav><!-- end main-menu -->
+    </div>
+  </div>
+</div>
+  
+  <div id="container">
+
+    
+    <div class="content-sidebar-wrap">
+
+    <div id="content">
+            <section id="post-content" role="main">
+                        <h1 class="page-title">Ontology-Based Data Access: A Survey</h1>                                        <div class="region region-content">
+  <div id="block-system-main" class="block block-system">
+
+      
+  <div class="content">
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Quattrocento+Sans" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <div class="container-fluid proceedings-detail">
+    	<div class="row">
+		    <div class="col-md-8 col-xs-12 col-sm-12">
+		    	<h1>
+		    		Ontology-Based Data Access: A Survey
+		    	</h1>
+		    	<h2>Guohui Xiao, Diego Calvanese, Roman Kontchakov, Domenico Lembo, Antonella Poggi, Riccardo Rosati, Michael Zakharyaschev</h2>
+		    </div>
+		    <div class="col-md-4 img-cont hidden-xs hidden-sm">
+		       <img src="/sites/default/files/proceedings_images/p18.png" width="100%" />
+
+
+		    </div>
+		</div>
+	    <div class="row">
+	    	<div class="col-md-8 col-xs-12 col-sm-12">
+	    		<div>Proceedings of the Twenty-Seventh International Joint Conference on Artificial Intelligence</div>
+	    		<div>Survey track. Pages 5511-5519.
+	    		<a href="https://doi.org/10.24963/ijcai.2018/777"  class="doi" >https://doi.org/10.24963/ijcai.2018/777 </a></div>
+	    	</div>
+	    	<div class="col-md-4 col-xs-12 col-sm-12">
+		    	<div >
+			    	<div class="btn-container">
+				    	 <a class="button btn-lg btn-download" href="https://www.ijcai.org/proceedings/2018/0777.pdf"><i class="fa fa-file-pdf-o"></i> PDF </a>
+				    	 <a class="button btn-lg btn-download" href="/proceedings/2018/bibtex/777"> <i class="fa fa-download" ></i> BibTeX</a>
+				   </div>
+		    	</div>
+	    	</div>
+
+	    </div>
+	    <hr>
+	    <div class="row">
+		    <div class="col-md-12">
+		    	We present the framework of ontology-based data access, a semantic paradigm for providing a convenient and user-friendly access to data repositories, which has been actively developed and studied in the past decade. Focusing on relational data sources, we discuss the main ingredients of ontology-based data access, key theoretical results, techniques, applications and future challenges.
+		    </div>
+		    <div class="col-md-12">
+		    	<div class="keywords"><div class="title">Keywords:</div><div class="topic">Knowledge Representation and Reasoning: Description Logics and Ontologies </div><div class="topic"> Knowledge Representation and Reasoning: Knowledge Representation Languages </div><div class="topic"> Knowledge Representation and Reasoning: Logics for Knowledge Representation </div><div class="topic"> Multidisciplinary Topics and Applications: Intelligent Database Systems</div></div>
+		    </div>
+	    </div>
+    </div>  </div>
+  
+</div> <!-- /.block -->
+</div>
+ <!-- /.region -->
+      </section> <!-- /#main -->
+    </div>
+  
+      
+    </div>
+
+      
+</div>
+
+<div id="footer">
+  <div id="footer_wrapper">
+      </div>
+  <div class="footer_credit">
+    <div class="footer_inner_credit">
+          
+    <div id="copyright">
+          <p class="copyright">Copyright &copy; 2026,  </p> <p class="credits"></p>
+    <div class="clear"></div>
+    </div>
+  </div>
+  </div>
+</div>
+  </body>
+</html>

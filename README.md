@@ -1,8 +1,8 @@
 # vive-md
 
-바이브코딩용 개발 가이드 & 워터폴 산출물 템플릿 모음.
+바이브코딩용 개발 가이드 & 방법론 산출물 템플릿 모음.
 
-프로젝트에 해당 가이드를 복사하면 Claude Code가 보안 / 생산성 / 성능 모범 사례를 자동으로 적용합니다. 워터폴 산출물 템플릿으로 SRS, 설계서, 테스트 계획서 등을 바로 생성할 수 있습니다.
+프로젝트에 해당 가이드를 복사하면 Claude Code가 보안 / 생산성 / 성능 모범 사례를 자동으로 적용합니다. 워터폴 산출물 템플릿으로 SRS, 설계서, 테스트 계획서 등을 바로 생성하고, 칸반 산출물 템플릿으로 유지보수/운영 단계를 관리할 수 있습니다. MCP 서버 개발, Skills 생성, 380개 이상의 에이전트 스킬 카탈로그도 포함합니다.
 
 ## 📚 바이브코딩 라이브러리
 
@@ -11,9 +11,12 @@
 | 분류 | 경로 | 설명 |
 |------|------|------|
 | 가이드 | [`vibe-coding/README.md`](./vibe-coding/README.md) | 바이브코딩 & 멀티에이전트 오케스트레이션 종합 가이드 |
+| MCP | [`vibe-coding/mcp/`](./vibe-coding/mcp/) | MCP 아키텍처, 서버 개발, 보안, 실전 패턴 |
+| Skills | [`vibe-coding/skills/`](./vibe-coding/skills/) | Skills 생성, 고급 패턴, 실전 예시 |
 | 논문 | [`vibe-coding/papers/`](./vibe-coding/papers/) | ChatDev, MetaGPT 등 연구 논문 요약 |
 | 프롬프트 | [`vibe-coding/prompts/`](./vibe-coding/prompts/) | 실전 프롬프트 예시 모음 |
 | 자료 | [`vibe-coding/resources/`](./vibe-coding/resources/) | 도구, 링크, 추가 자료 |
+| **Skills 카탈로그** | [`vibe-coding/resources/Awesome-Claude-Skills-한국어-가이드.md`](./vibe-coding/resources/Awesome-Claude-Skills-한국어-가이드.md) | **380개+ Claude Skills 한국어 종합 가이드** (Anthropic 공식 + 15개 기업 팀 + 커뮤니티) |
 
 ---
 
@@ -94,9 +97,12 @@
 |------|------|------|
 | 메인 가이드 | [`vibe-coding/README.md`](./vibe-coding/README.md) | 바이브코딩 개념, 프레임워크, 모범 사례 |
 | 도구 가이드 | [`vibe-coding/tools/`](./vibe-coding/tools/) | Claude Code, Kimi 바이브코딩 실전 가이드 |
+| MCP 지식 센터 | [`vibe-coding/mcp/`](./vibe-coding/mcp/) | MCP 아키텍처, 서버 개발, 보안, 실전 패턴 (5개 문서, ~6,800줄) |
+| Skills 지식 센터 | [`vibe-coding/skills/`](./vibe-coding/skills/) | Skills 생성 가이드, 고급 패턴, 실전 예시 (4개 문서, ~5,300줄) |
 | 논문 분석 | [`vibe-coding/papers/`](./vibe-coding/papers/) | 멀티에이전트 오케스트레이션 논문 분석 |
 | 프롬프트 | [`vibe-coding/prompts/`](./vibe-coding/prompts/) | 실전 프롬프트 예시 모음 |
 | 자료 모음 | [`vibe-coding/resources/`](./vibe-coding/resources/) | 추가 도구, 링크, 참고 자료 |
+| **Skills 카탈로그** | [`Awesome-Claude-Skills-한국어-가이드`](./vibe-coding/resources/Awesome-Claude-Skills-한국어-가이드.md) | 380개+ Claude Skills 한국어 종합 가이드 |
 
 ## 연구 & 참고 문서
 

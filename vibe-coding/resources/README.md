@@ -138,6 +138,17 @@
 
 ---
 
+## Claude Skills 생태계
+
+| 리소스 | 설명 |
+|--------|------|
+| [**Awesome Claude Skills 한국어 가이드**](./Awesome-Claude-Skills-한국어-가이드.md) | Anthropic 공식 + 기업 팀(Vercel, Cloudflare, Microsoft 등 15개 팀) + 커뮤니티 스킬 380개 이상을 한국어로 정리한 종합 가이드 |
+| [awesome-claude-skills](https://github.com/travisvn/awesome-claude-skills) | Claude Skills 큐레이션 (공식 + 커뮤니티) |
+| [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | Claude Code 생태계 종합 리소스 (스킬, 훅, 오케스트레이터, 도구) |
+| [awesome-agent-skills](https://github.com/VoltAgent/awesome-agent-skills) | 380개+ 에이전트 스킬 (기업 팀 + 커뮤니티) |
+
+---
+
 ## 템플릿 & 스타터 키트
 
 | 리소스 | 설명 | 링크 |

@@ -21,6 +21,17 @@
 │
 ├── vibe-coding/                                # 바이브코딩 가이드
 │   ├── README.md
+│   ├── mcp/                                    # MCP 지식 센터
+│   │   ├── README.md                           # MCP 종합 가이드 (아키텍처, Transport, 설정, 프리미티브)
+│   │   ├── 01-MCP-서버-개발-가이드.md           # 커스텀 서버 개발 (TS/Python SDK)
+│   │   ├── 02-MCP-보안-인증-가이드.md           # OAuth 2.0, 엔터프라이즈 보안
+│   │   ├── 03-MCP-실전-패턴-모음.md             # DB, GitHub, 모니터링 통합 패턴
+│   │   └── 04-MCP-서버-카탈로그.md              # 인기 MCP 서버 설정 레시피
+│   ├── skills/                                 # Skills 지식 센터
+│   │   ├── README.md                           # Skills 종합 가이드 (SKILL.md, Frontmatter, 스코프)
+│   │   ├── 01-Skills-생성-실전-가이드.md         # 스킬 생성 스텝바이스텝
+│   │   ├── 02-Skills-고급-패턴.md               # 동적 컨텍스트, 서브에이전트, Hooks
+│   │   └── 03-Skills-실전-예시-모음.md           # PR 리뷰, 배포, 코드 분석 등 실전 예시
 │   ├── tools/                                  # 도구별 가이드
 │   │   ├── Claude-Code-바이브코딩-가이드.md
 │   │   └── Kimi-바이브코딩-가이드.md
@@ -31,7 +42,8 @@
 │   │   ├── README.md
 │   │   └── 예시-프롬프트-모음.md
 │   └── resources/                              # 추가 자료
-│       └── README.md
+│       ├── README.md
+│       └── Awesome-Claude-Skills-한국어-가이드.md  # 380개+ Skills 한국어 카탈로그
 │
 └── templates/                                  # 개발 가이드 & 산출물 템플릿
     ├── spring-boot/Spring-Boot-개발가이드.md   # Spring Boot 3.x (3000줄+)
@@ -119,6 +131,20 @@
 - 도구별 바이브코딩 가이드 (Claude Code, Kimi)
 - 논문 분석 및 실전 프롬프트 모음
 - 추가 자료 및 리소스
+
+### MCP 지식 센터 (vibe-coding/mcp/)
+MCP(Model Context Protocol) 종합 가이드. 아키텍처, Transport, 서버 설정/개발/보안부터 실전 패턴과 서버 카탈로그까지.
+- 5개 문서, 약 6,800줄 분량
+- 커스텀 서버 개발 (TypeScript SDK, Python FastMCP)
+- OAuth 2.0 인증, 엔터프라이즈 보안 체크리스트
+- DB/GitHub/모니터링 통합 패턴, 공식+커뮤니티 서버 카탈로그
+
+### Skills 지식 센터 (vibe-coding/skills/)
+Claude Code Skills 종합 가이드. SKILL.md 구조, Frontmatter 레퍼런스, 스킬 생성/고급 패턴/실전 예시.
+- 4개 문서, 약 5,300줄 분량
+- User-Invocable/Agent 스킬 튜토리얼
+- 동적 컨텍스트, String Substitution, CI/CD 통합
+- PR 리뷰, 배포 자동화, 보안 스캔 등 8개+ 완전한 예시
 
 ## 작성 원칙
 - 한국어로 작성, 기술 용어는 영어 유지

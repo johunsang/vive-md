@@ -26,7 +26,8 @@
 │   │   ├── 01-MCP-서버-개발-가이드.md           # 커스텀 서버 개발 (TS/Python SDK)
 │   │   ├── 02-MCP-보안-인증-가이드.md           # OAuth 2.0, 엔터프라이즈 보안
 │   │   ├── 03-MCP-실전-패턴-모음.md             # DB, GitHub, 모니터링 통합 패턴
-│   │   └── 04-MCP-서버-카탈로그.md              # 인기 MCP 서버 설정 레시피
+│   │   ├── 04-MCP-서버-카탈로그.md              # 인기 MCP 서버 설정 레시피
+│   │   └── Awesome-MCP-Servers-한국어-가이드.md  # 2596개+ MCP 서버 한국어 카탈로그
 │   ├── skills/                                 # Skills 지식 센터
 │   │   ├── README.md                           # Skills 종합 가이드 (SKILL.md, Frontmatter, 스코프)
 │   │   ├── 01-Skills-생성-실전-가이드.md         # 스킬 생성 스텝바이스텝
@@ -134,10 +135,11 @@
 
 ### MCP 지식 센터 (vibe-coding/mcp/)
 MCP(Model Context Protocol) 종합 가이드. 아키텍처, Transport, 서버 설정/개발/보안부터 실전 패턴과 서버 카탈로그까지.
-- 5개 문서, 약 6,800줄 분량
+- 6개 문서, 약 9,700줄 분량
 - 커스텀 서버 개발 (TypeScript SDK, Python FastMCP)
 - OAuth 2.0 인증, 엔터프라이즈 보안 체크리스트
 - DB/GitHub/모니터링 통합 패턴, 공식+커뮤니티 서버 카탈로그
+- **2596개+ MCP 서버 한국어 종합 카탈로그** (32개 카테고리, 4개 출처 통합)
 
 ### Skills 지식 센터 (vibe-coding/skills/)
 Claude Code Skills 종합 가이드. SKILL.md 구조, Frontmatter 레퍼런스, 스킬 생성/고급 패턴/실전 예시.
